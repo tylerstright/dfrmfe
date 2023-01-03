@@ -1,7 +1,7 @@
 import react from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
-import { Nav } from 'react-bootstrap';
+import { Nav, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import NPTlogos from './NPTlogos2.png';
 
@@ -10,14 +10,28 @@ export default function NavBar() {
         <Navbar bg='dark' variant='dark' sticky='top' >
             <Container>
                 <Navbar.Brand >
-                    <img src={NPTlogos} width='auto' height='80px' className="d-inline-block align-top" alt='Nez Perce Tribe Logos'></img>
+                    <img src={NPTlogos} width='100%' height='50px' className="d-inline-block align-top" alt='Nez Perce Tribe Logos'></img>
                 </Navbar.Brand>
-                <Navbar.Toggle aria-controls='basic-navbar-nav' />
-                <Link to='/' style={{color:'white'}}>Home</Link>
-                <Link to='/departments' style={{color:'white'}}>Departments</Link>
-                <Link to='/facilities' style={{color:'white'}}>Facilities</Link>
-                <Link to='/news' style={{color:'white'}}>News</Link>
-                <Link to='/documents' style={{color:'white'}}>Documents</Link>
+                <Nav className={'me-auto'} >
+                    <Link to='/' className={'nav-link'} >Home</Link>
+                    <Link to='/departments' className={'nav-link'} >Departments</Link>
+                    <Link to='/facilities' className={'nav-link'} >Facilities</Link>
+                    <Link to='/news' className={'nav-link'} >News</Link>
+                    <Link to='/documents' className={'nav-link'} >Documents</Link>
+                    <NavDropdown title="UserName" >
+                        {/* This isn't complete. Check Django. */}
+                        <Link to='/userprofile' className={'dropdown-item'}>User Profile</Link>
+                        <Link to='/' className={'dropdown-item'}>Sign Out</Link>
+                        <Link to='/facilities' className={'dropdown-item'}>Facilities</Link>
+                    </NavDropdown>
+                </Nav>
+                {/* <Nav>
+                    <Nav.Link href='/'>Home</Nav.Link>
+                    <Nav.Link href='/departments'>Departments</Nav.Link>
+                    <Nav.Link href='/facilities'>Facilities</Nav.Link>
+                    <Nav.Link href='/news'>News</Nav.Link>
+                    <Nav.Link href='/documents'>Documents</Nav.Link>
+                    </Nav>                 */}
             </Container>
         </Navbar>
     )
