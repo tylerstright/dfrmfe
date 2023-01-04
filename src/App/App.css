@@ -1,30 +1,14 @@
 
 
 /* bar styling */
-/* #top-bar, #bottom-bar {
-    background-color: #620008;
+.bottom-bar {
+    height: 76px;
+    background-size: contain;
+    background-position: center;
+    background-image: url("../images/red-bar.jpg");
     border-bottom: solid #000 8px;
-}
-        
-#top-bar .container,
-#bottom-bar .container {
-    background-image: url("../img/red-bar.jpg");
-    background-size: 100% 100%; 
-    height: 76px;
-}
 
-#top-bar.internal .container,
-#bottom-bar .container-fluid {
-    background-image: url("../img/red-bar.jpg");
-    background-size: 100% 100%; 
-    height: 76px;
-    border-bottom:4px solid #fff;
 }
-    
-#top-bar .row {
-    line-height: 76px;
-} */
-
 
 /* footer */
 .footer-content {
