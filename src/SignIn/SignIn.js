@@ -3,32 +3,24 @@ import axios from 'axios';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import npt1855 from '../images/NPT.png';
 
 export default function SignIn(props) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
     // submitting Login information...
-    const handleSubmit = (event) => {
+    const submitLogin = (event) => {
         event.preventDefault();
-        axios.post('/services/api/v1/account/login', {
+        axios.post('/accounts/login', {
             Username: username,
             Password: password
         })
             .then(response => { //on success
                 if (response.status === 200) {
                     //console.log(response);
-                    props.setUser({
-                        loginStatus: response.status,
-                        Id: response.data.User.Id,
-                        Username: response.data.User.Username,
-                        FullName: response.data.User.Fullname,
-                    });
+                    props.setUser('VICTORY!');
                     console.log('Login.js: Successful Login: ' + response.status);
-                    props.setLoginStatus(response.status);
-                    // hide login container / modal thing
-                    document.getElementsByClassName('login-container')[0].style.display = 'none';
+                    // redirect to home?
                 }
             })
             .catch(error => { //on failure
@@ -48,19 +40,20 @@ export default function SignIn(props) {
                 <Col></Col>
                 <Col>
                     <h1 className={'text-center'} style={{ color: 'black' }}>Sign In</h1>
-                    <p className={'text-center'} style={{ color: 'black' }}>If you have not created an account yet, please <a href='#'>sign up</a>!</p>
+                    <p className={'text-center'} style={{ color: 'black' }}>If you have not created an account, please <a href='#'>sign up</a>!</p>
                     <div className="input-group mb-3">
                         <span className="input-group-text" style={{ width: '100px' }} >Username</span>
-                        <input type="text" className="form-control" aria-label="Username" />
+                        <input id={'usernameInput'} type="text" className="form-control" aria-label="Username" onChange={event => setUsername(event.target.value)}/>
                     </div>
                     <div className="input-group mb-3">
                         <span className="input-group-text" style={{ width: '100px' }} >Password</span>
-                        <input type="password" className="form-control" aria-label="Password" />
+                        <input id={'passwordInput'} type="password" className="form-control" aria-label="Password" onChange={event => setPassword(event.target.value)} />
                     </div>
                     <div className={'text-center'}>
-                        <button className={'btn btn-primary text-center'} type='submit' >Sign In</button>
+                        <button className={'btn btn-primary text-center'} type='submit' onClick={submitLogin}>Sign In</button>
                     </div>
-                    <a className={'text-center'} style={{ display: 'block' }} href="#">Forgot your password?</a>
+                    <br />
+                    <a className={'text-center'} style={{ display: 'block' }} href="#">Forgot password?</a>
                     <br />
                 </Col>
                 <Col></Col>
