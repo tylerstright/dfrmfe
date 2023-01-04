@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from '../Home/Home';
 import Footer from './Footer';
@@ -11,6 +11,7 @@ import Documents from '../Documents/Documents';
 import './App.css';
 
 export default function App() {
+  const [user, setUser] = useState(null);
 
   // the common elements throughout the website are the NavBar and the background image.
   return (
@@ -18,7 +19,7 @@ export default function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<SignIn />} />
+        <Route path="/login" element={<SignIn user={user} setUser={setUser} />} />
         <Route path="/departments" element={<Departments />} />
         <Route path="/facilities" element={<Facilities />} />
         <Route path="/news" element={<News />} />
