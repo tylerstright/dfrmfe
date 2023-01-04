@@ -1,11 +1,11 @@
-import react from 'react';
+import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import { Nav, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import NPTlogos from './NPTlogos2.png';
+import NPTlogos from '../images/NPTlogos2.png';
 
-export default function NavBar() {
+export default function NavBar(props) {
     return (
         <Navbar bg='dark' variant='dark' sticky='top' >
             <Container>
@@ -18,20 +18,19 @@ export default function NavBar() {
                     <Link to='/facilities' className={'nav-link'} >Facilities</Link>
                     <Link to='/news' className={'nav-link'} >News</Link>
                     <Link to='/documents' className={'nav-link'} >Documents</Link>
+                </Nav>
+
+                {/* Should show "Sign In" until we do, then different menu. */}
+                <Nav className={'ml-auto'}> 
+                    <Link to='/login' className={'nav-link'} >Sign In</Link>
                     <NavDropdown title="UserName" >
-                        {/* This isn't complete. Check Django. */}
                         <Link to='/userprofile' className={'dropdown-item'}>User Profile</Link>
                         <Link to='/' className={'dropdown-item'}>Sign Out</Link>
+                        <NavDropdown.Divider></NavDropdown.Divider>
+                        <NavDropdown.ItemText><strong>Add/Edit</strong></NavDropdown.ItemText>
                         <Link to='/facilities' className={'dropdown-item'}>Facilities</Link>
                     </NavDropdown>
                 </Nav>
-                {/* <Nav>
-                    <Nav.Link href='/'>Home</Nav.Link>
-                    <Nav.Link href='/departments'>Departments</Nav.Link>
-                    <Nav.Link href='/facilities'>Facilities</Nav.Link>
-                    <Nav.Link href='/news'>News</Nav.Link>
-                    <Nav.Link href='/documents'>Documents</Nav.Link>
-                    </Nav>                 */}
             </Container>
         </Navbar>
     )

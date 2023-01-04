@@ -1,0 +1,71 @@
+
+
+/* footer */
+
+.footer-content {
+    border-top-width: 10px;
+    padding-top: 30px;
+    background-color: #000;
+    border-top: solid transparent 27px;
+    border-image: url("../images/triangle-pattern.png") 38;
+    border-image-repeat: repeat;
+    background-color: #000;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-bottom:0;
+}
+
+#footer-content ul {
+    padding: 0;
+}
+
+#footer-content li {
+    list-style: none;
+    padding-bottom: 5px;
+    border-bottom: solid #F4CE3E 1px;
+    margin-bottom: 5px;
+}
+
+#footer-content li a {
+    color: white;
+    font-size: 14px; /*18px*/
+    padding-left: 10px;
+    padding-bottom: 5px;
+    display: block;
+    text-decoration: none;
+}
+
+.footer-h5 {
+    text-transform: uppercase;
+    color: #F4CE3E;
+    font-size: 16px;
+}
+
+#footer-content address {
+    color: #FFF;
+    font-size: 14px;
+}
+
+#footer-content p {
+    font-weight: 100;
+    color: #FFF;
+    font-size: 14px;
+    }
+
+#footer-content p div{
+    display: inline;
+}
+#footer-content span.number-for {
+    display: block;
+    color: white;
+}
+
+.footer-logo {
+    max-width: 100%
+}
+
+#footer-content .disclaimer {
+    text-align: center;
+    margin: 30px 0 30px;
+    color:#fff;
+}
