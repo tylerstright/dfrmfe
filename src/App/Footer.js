@@ -6,7 +6,7 @@ import logo from '../images/logo.png'
 import facebook from '../images/footer-facebook.png';
 import twitter from '../images/large-twitter.png';
 import instagram from '../images/footer-instagram.png';
-import './App.css';
+import './Footer.css';
 
 export default function Footer() {
     return (
@@ -48,7 +48,7 @@ export default function Footer() {
                             <a className={'p-1'} href="https://www.instagram.com/nezpercetribe/" target="_blank" rel="noreferrer nofollow"><img src={instagram} alt="Instagram" /></a>
                         </Col>
                     </Row>
-                    <Row className={'justify-content-center'} >
+                    <Row className={'justify-content-center pb-4'} >
                         Nez Perce Tribe Department of Fisheries Resources Management. Copyright © 2022 Nez Perce Tribe. All rights reserved.
                     </Row>
                 </Container>
