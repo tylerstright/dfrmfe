@@ -3,47 +3,35 @@ import axios from 'axios';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import CSRFtoken from './CSRFtoken';
 
 export default function SignIn(props) {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-
-    // submitting Login information...
-    const submitLogin = (event) => {
-        event.preventDefault();
-        axios.post('/accounts/login', {
-            Username: username,
-            Password: password
-        })
-            .then(response => { //on success
-                if (response.status === 200) {
-                    //console.log(response);
-                    props.setUser('VICTORY!');
-                    console.log('Login.js: Successful Login: ' + response.status);
-                    // redirect to home?
-                }
-            })
-            .catch(error => { //on failure
-                console.log('Login failed!')
-                console.log(error);
-                alert('Username and Password combination not accepted, please try again.');
-                document.getElementById('usernameInput').value = '';
-                document.getElementById('passwordInput').value = '';
-            });
-    }
-
 
     return (
         <Container>
             <br />
-            <Row  >
+            <Row>
                 <Col></Col>
                 <Col>
                     <h1 className={'text-center'} style={{ color: 'black' }}>Sign In</h1>
                     <p className={'text-center'} style={{ color: 'black' }}>If you have not created an account, please <a href='#'>sign up</a>!</p>
-                    <div className="input-group mb-3">
+                    <form action={'/accounts/login/'} method={'post'} >
+                        <CSRFtoken />
+                        <div className="form-group">
+                            <label htmlFor="exampleInputEmail1">Email address</label>
+                            <input name='login' type="email" className="form-control" aria-describedby="emailHelp" placeholder="Enter email" />
+                            <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="exampleInputPassword1">Password</label>
+                            <input name='password' type="password" className="form-control" placeholder="Password" />
+                        </div>
+                        <button type="submit" className="btn btn-primary">Submit</button>
+                    </form>
+
+                    {/* <div className="input-group mb-3">
                         <span className="input-group-text" style={{ width: '100px' }} >Username</span>
-                        <input id={'usernameInput'} type="text" className="form-control" aria-label="Username" onChange={event => setUsername(event.target.value)}/>
+                        <input id={'usernameInput'} type="text" className="form-control" aria-label="Username" onChange={event => setUsername(event.target.value)} />
                     </div>
                     <div className="input-group mb-3">
                         <span className="input-group-text" style={{ width: '100px' }} >Password</span>
@@ -54,31 +42,9 @@ export default function SignIn(props) {
                     </div>
                     <br />
                     <a className={'text-center'} style={{ display: 'block' }} href="#">Forgot password?</a>
-                    <br />
+                    <br /> */}
                 </Col>
                 <Col></Col>
-                {/* <form onSubmit={handleSubmit} >
-                    <img src={npt1855} alt='Nez Perce Tribe 1855 Logo' /> <br />
-                    <input
-                        id='usernameInput'
-                        type='text'
-                        className='username'
-                        placeholder='CDMS Username'
-                        value={username}
-                        onChange={event => setUsername(event.target.value)}
-                        required
-                    /> <br />
-                    <input
-                        id='passwordInput'
-                        type='Password'
-                        className='password'
-                        placeholder='Password'
-                        value={password}
-                        onChange={event => setPassword(event.target.value)}
-                        required
-                    /> <br />
-                    <button type='submit' >Login</button>
-                </form> */}
             </Row>
         </Container>
     )
