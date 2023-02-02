@@ -9,6 +9,7 @@ import Divisions from '../Divisions/Divisions';
 import Facilities from '../Facilities/Facilities';
 import News from '../News/News';
 import Documents from '../Documents/Documents';
+import UserProfile from '../User/UserProfile';
 import './App.css';
 
 export default function App() {
@@ -26,6 +27,7 @@ export default function App() {
         <Route path="/facilities" element={<Facilities />} />
         <Route path="/news" element={<News />} />
         <Route path="/documents" element={<Documents />} />
+        <Route path="/profile" element={<UserProfile />} />
       </Routes>
       <Footer />
     </BrowserRouter>

@@ -25,7 +25,7 @@ export default function NavBar(props) {
                 <Nav className={'ml-auto'}> 
                     <Link to='/login' className={'nav-link'} >Sign In</Link>
                     <NavDropdown title="UserName" >
-                        <Link to='/userprofile' className={'dropdown-item'}>User Profile</Link>
+                        <Link to='/profile' className={'dropdown-item'}>User Profile</Link>
                         <Link to='/' className={'dropdown-item'}>Sign Out</Link>
                         <NavDropdown.Divider></NavDropdown.Divider>
                         <NavDropdown.ItemText><strong>Add/Edit</strong></NavDropdown.ItemText>

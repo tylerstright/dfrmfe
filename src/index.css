@@ -1,21 +1,4 @@
-/* #root {
-    background-image: url('./images/Clearwater_River_Home_Page.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
- } */
-
-#root,
-body {
-    height: 100%;
-    padding: 0;
-    margin: 0;
-    color: white;
-}
-
-body {
-    background: rgba(0, 0, 0, 0.466);
-}
-
+/* Note: we should be trying to do all possible styling through bootstrap 5 */
 h1,
 h2,
 h3,
