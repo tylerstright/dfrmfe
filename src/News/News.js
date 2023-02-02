@@ -1,10 +1,13 @@
 import React from 'react';
-import Container from 'react-bootstrap/Container';
+import PageHeader from '../Page/PageHeader';
+
+import headerImage from '../images/wallowalake.jpg';
 
 export default function News() {
+    
     return (
-        <Container style={{backgroundColor: 'brown'}}>
-            <h1>News</h1>
-        </Container>
+        <>
+            <PageHeader title='News' image={headerImage} />
+        </>
     )
 }

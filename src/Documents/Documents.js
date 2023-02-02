@@ -1,10 +1,12 @@
 import React from 'react';
-import Container from 'react-bootstrap/Container';
+import PageHeader from '../Page/PageHeader';
+
+import headerImage from '../images/hatcheryparr.jpg';
 
 export default function Documents() {
     return (
-        <Container style={{backgroundColor: 'gray'}}>
-            <h1>Documents</h1>
-        </Container>
+        <>
+            <PageHeader title='Documents' image={headerImage} />
+        </>
     )
 }
