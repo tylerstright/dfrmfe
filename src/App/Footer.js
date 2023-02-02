@@ -30,12 +30,12 @@ export default function Footer() {
                         </Col>
                         <Col>
                             <h5 className={'footer-h5'} >Contact Us</h5>
-                            <address>
+                            <address  style={{color:'white'}}>
                                 100 Agency Road<br />
                                 P.O. Box 305<br />
                                 Lapwai, ID 83540
                             </address>
-                            <p>Administration Office: <a className={'footer-a'} href="tel:+12088437323" style={{ color: 'white', textDecoration: 'underline' }}>208-843-2253</a></p>
+                            <p  style={{color:'white'}}>Administration Office: <a className={'footer-a'} href="tel:+12088437323" style={{ color: 'white', textDecoration: 'underline' }}>208-843-2253</a></p>
                             {/* <p>Sweetwater Office: <a href="tel:+12088437145" style={{ color: 'white', textDecoration: 'underline' }}>208-843-2253</a></p>
                     <p>Orofino Office: <a href="tel:+12084767417" style={{ color: 'white', textDecoration: 'underline' }}>208-843-2253</a></p>
                     <p>Joseph Office: <a href="tel:+15414322500" style={{ color: 'white', textDecoration: 'underline' }}>208-843-2253</a></p>

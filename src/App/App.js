@@ -5,6 +5,7 @@ import Footer from './Footer';
 import SignIn from '../SignIn/SignIn';
 import NavBar from '../NavBar/NavBar';
 import Projects from '../Projects/Projects';
+import ProjectsList from '../Projects/ProjectsList';
 import Divisions from '../Divisions/Divisions';
 import Facilities from '../Facilities/Facilities';
 import News from '../News/News';
@@ -24,6 +25,7 @@ export default function App() {
         <Route path="/login" element={<SignIn user={user} setUser={setUser} />} />
         <Route path="/divisions" element={<Divisions />} />
         <Route path="/projects" element={<Projects />} />
+        <Route path="/projects/list" element={<ProjectsList />} />
         <Route path="/facilities" element={<Facilities />} />
         <Route path="/news" element={<News />} />
         <Route path="/documents" element={<Documents />} />

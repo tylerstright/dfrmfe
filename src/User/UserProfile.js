@@ -29,8 +29,8 @@ export default function UserProfile() {
                 <div className="container">
                     <br />
                     <div className="d-flex flex-row justify-content-around align-items-center">
-                            <img className="p-2 rounded-circle" style={avatarCSS} src={profilePic} />
-                        <div className="p-2">
+                            <img className="p-2 rounded-circle" style={avatarCSS} src={profilePic} alt={'User profile.'} ></img>
+                            <div className='p-2'>
                             <h3>Department of Fisheries Resources Management</h3>
                             <p><strong>Position Class:</strong> {position_class}</p>
                             <p><strong>Title:</strong> {title}</p>
