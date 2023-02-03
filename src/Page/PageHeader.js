@@ -15,13 +15,15 @@ export default function PageHeader(props) {
         minHeight: '500px',
         position: 'relative',
         top: '50%',
-        transform: 'translateY(-50%)',
+        transform: 'translateY(-50%) translateX(-50%)',
+        left: '50%',
+
     }
 
     return (
         <>
             <div style={imgContainerCSS}>
-                <img src={props.image} style={imgCSS}></img>
+                <img src={props.image} style={imgCSS} alt=''></img>
             </div>
             <div className="bg-dark">
                 <div className="container py-5">

@@ -14,7 +14,7 @@ export default function NavBar(props) {
                 </Navbar.Brand>
                 <Nav className={'me-auto'} >
                     <Link to='/' className={'nav-link'} >Home</Link>
-                    <Link to='/divisions' className={'nav-link'} >Divisions</Link>
+                    <Link to='/departments' className={'nav-link'} >Departments</Link>
                     <Link to='/projects' className={'nav-link'} >Projects</Link>
                     <Link to='/facilities' className={'nav-link'} >Facilities</Link>
                     <Link to='/news' className={'nav-link'} >News</Link>

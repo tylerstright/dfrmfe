@@ -10,15 +10,20 @@ import headerImage from '../images/background.jpg';
 export default function ProjectsList() {
     const [projectsList, setProjectsList] = useState(null);
 
-    const keepKeys = ['name', 'created', 'active'];
 
     // query departments on first page visit.
     useEffect(() => {
+
+        // fields to be shown on list
+        const keepKeys = ['name', 'created', 'active', 'view', 'edit'];
+
         axios.get('/api/project/') // USE THE PROXY!
             .then(response => {
                 console.log('/api/project/ response:');
                 console.log(response);
-                setProjectsList(response.data.map(selectKeys(keepKeys)));
+                // add view and edit using project.id to assist in routing links
+                const listData = response.data.map(o => ({...o, view: o.id, edit: o.id})).map(selectKeys(keepKeys));
+                setProjectsList(listData);
             })
             .catch(error => {
                 console.log(error);
@@ -31,6 +36,7 @@ export default function ProjectsList() {
 
     return (
         <>
+            <button type='button' onClick={()=> console.log(projectsList)}>projectsList</button>
             <PageHeader title='Projects List' image={headerImage} />
             <HTLink data={projectsList} />
         </>

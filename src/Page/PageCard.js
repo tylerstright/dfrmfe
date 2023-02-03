@@ -12,7 +12,7 @@ export default function PageCard(props) {
                 <div className="card text-light bg-dark border-dark my-3">
                     <div className="row g-0">
                         <div className="col-md-4">
-                            <img src={cardImage} className="img-fluid rounded-start" alt={`Project image for ${props.data.name}`} />
+                            <img src={cardImage} className="img-fluid rounded-start" alt='' />
                         </div>
                         <div className="col-md-8">
                             <div className="card-body">

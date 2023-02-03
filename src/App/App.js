@@ -6,12 +6,11 @@ import SignIn from '../SignIn/SignIn';
 import NavBar from '../NavBar/NavBar';
 import Projects from '../Projects/Projects';
 import ProjectsList from '../Projects/ProjectsList';
-import Divisions from '../Divisions/Divisions';
+import Departments from '../Departments/Departments';
 import Facilities from '../Facilities/Facilities';
 import News from '../News/News';
 import Documents from '../Documents/Documents';
 import UserProfile from '../User/UserProfile';
-import './App.css';
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -23,7 +22,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<SignIn user={user} setUser={setUser} />} />
-        <Route path="/divisions" element={<Divisions />} />
+        <Route path="/departments" element={<Departments />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/projects/list" element={<ProjectsList />} />
         <Route path="/facilities" element={<Facilities />} />

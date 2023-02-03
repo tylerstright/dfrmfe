@@ -1,8 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 // import Handsontable from 'handsontable/base';
 import { registerAllModules } from 'handsontable/registry';
-import { HotTable } from '@handsontable/react';
+import { HotTable, HotColumn } from '@handsontable/react';
+import { EditButton, ViewButton } from './HTButtons';
 import 'handsontable/dist/handsontable.full.min.css';
+
+import toTitleCase from '../functions/toTitleCase';
 
 // register Handsontable's modules
 registerAllModules(); // not positive what this does 11/30/22
@@ -12,14 +15,14 @@ export default function HTLink(props) {
     // const [originalData, setOriginalData] = useState(null);
     const [data, setData] = useState(null);
     const [colHeaders, setColHeaders] = useState(null);
-    const [columns, setColumns] = useState(null);
+    // const [columns, setColumns] = useState(null);
 
     // grab data from props
     useEffect(() => {
         // setOriginalData(props.data);
         setData(props.data);
         setColHeaders(Object.keys(props.data[0]));
-    }, []);
+    }, [props.data]);
 
 
     // if no data, Loading screen...
@@ -30,20 +33,33 @@ export default function HTLink(props) {
     };
 
     return (
-        <div className='Handson'>
+        <div className='row container p-5'>
+            <button type='button' onClick={() => console.log(props.data)}>log data</button>
             <HotTable
                 ref={hotRef} // API
                 data={data}
-                // rowHeaders={true}
-                colHeaders={colHeaders}
+                colHeaders={colHeaders.map(field => toTitleCase(field))}
                 manualColumnResize={true}
-                dropdownMenu={['filter_by_condition', 'filter_action_bar']}
-                filters={true}
-                // contextMenu={['clear_column', 'freeze_column', 'unfreeze_column']} // this gives a menu on rightClick
+                disableVisualSelection={true}
                 height="800px"
-                width="100%"
+                width="1000px"
                 licenseKey="non-commercial-and-evaluation" // for non-commercial use only
-            />
+            >
+                {/* We need to loop through, generate the view/edit buttons, and have other fields read Only text. */}
+                {colHeaders.map((column, index) => {
+                    if (column === 'view') return (
+                        <HotColumn key={index} data={column} width={50} readOnly={true}>
+                            <ViewButton hot-renderer />
+                        </HotColumn>
+                    )
+                    if (column === 'edit') return (
+                        <HotColumn key={index} data={column} width={50} readOnly={true}>
+                            <EditButton hot-renderer />
+                        </HotColumn>
+                    )
+                    return <HotColumn key={index} data={column} width={200} readOnly={true} />
+                })}
+            </HotTable>
         </div>
     )
 
