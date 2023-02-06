@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 // import Handsontable from 'handsontable/base';
 import { registerAllModules } from 'handsontable/registry';
 import { HotTable, HotColumn } from '@handsontable/react';
-import { EditButton, ViewButton } from './HTButtons';
+import { ActiveCheck, EditButton, ViewButton } from './HTButtons';
 import 'handsontable/dist/handsontable.full.min.css';
 
 import toTitleCase from '../functions/toTitleCase';
@@ -33,7 +33,7 @@ export default function HTLink(props) {
     };
 
     return (
-        <div className='row container p-5'>
+        <div className='container p-5'>
             <button type='button' onClick={() => console.log(props.data)}>log data</button>
             <HotTable
                 ref={hotRef} // API
@@ -42,19 +42,27 @@ export default function HTLink(props) {
                 manualColumnResize={true}
                 disableVisualSelection={true}
                 height="800px"
-                width="1000px"
+                width="1200px"
                 licenseKey="non-commercial-and-evaluation" // for non-commercial use only
             >
                 {/* We need to loop through, generate the view/edit buttons, and have other fields read Only text. */}
                 {colHeaders.map((column, index) => {
                     if (column === 'view') return (
-                        <HotColumn key={index} data={column} width={50} readOnly={true}>
+                        <HotColumn className='htCenter htMiddle' key={index} data={column} width={75} readOnly={true}>
                             <ViewButton hot-renderer />
                         </HotColumn>
                     )
                     if (column === 'edit') return (
-                        <HotColumn key={index} data={column} width={50} readOnly={true}>
+                        <HotColumn className='htCenter htMiddle' key={index} data={column} width={75} readOnly={true}>
                             <EditButton hot-renderer />
+                        </HotColumn>
+                    )
+                    if (column === 'name') return (
+                        <HotColumn key={index} data={column} width={500} readOnly={true} />
+                    )
+                    if (column === 'active') return (
+                        <HotColumn className='htCenter htMiddle' key={index} data={column} width={75} readOnly={true}>
+                            <ActiveCheck hot-renderer />
                         </HotColumn>
                     )
                     return <HotColumn key={index} data={column} width={200} readOnly={true} />
