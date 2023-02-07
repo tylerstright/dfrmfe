@@ -1,4 +1,4 @@
-// import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Eye, Pencil, CheckCircle, XCircle } from 'react-bootstrap-icons'
 
 // Useful Links:
@@ -7,22 +7,29 @@ import { Eye, Pencil, CheckCircle, XCircle } from 'react-bootstrap-icons'
 
 
 export const ViewButton = (props) => {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     // this is necessary to center the content. We pass the TD className to the cell properties (className='htCenter')
     props.TD.className = props.cellProperties.className;
 
-    return (
-        <button type='image' className="btn btn-success" onClick={() => console.log(`View Value: ${props.value}`)}>
-        {/* <button type='image' className="btn btn-success" onClick={() => console.log(`View Click`)}> */}
+    const stateInfo = {
+        api: props.value
+    }
 
-            <Eye />
-        </button>
+    return (
+        // <button type='image' className="btn btn-success" onClick={() => console.log(`View Value: ${props.value}`)}>
+        // <button type='image' className="btn btn-success" onClick={() => navigate(props.value, {state:{test:'BLAPHDRPZA'}})}>
+        //     <Eye />
+        // </button>
+
+        <Link className="btn btn-success" to={props.value} state={{data:stateInfo}} >
+            <Eye color='white'/>
+        </Link>
+
     )
 }
 
 export const EditButton = (props) => {
-
     // this is necessary to center the content. We pass the TD className to the cell properties (className='htCenter')
     props.TD.className = props.cellProperties.className;
 
@@ -34,17 +41,14 @@ export const EditButton = (props) => {
 }
 
 export const ActiveCheck = (props) => {
-
     // this is necessary to center the content. We pass the TD className to the cell properties (className='htCenter')
     props.TD.className = props.cellProperties.className;
 
-    // variable CSS based on true/false
-    var btnClass;
-    props.value === true ? btnClass = 'btn btn-primary' : btnClass = 'btn btn-danger';
-    
+    var imgSize = '25';
+
     return (
-        <button type='image' className={btnClass} onClick={() => console.log(`Active Value: ${props.value}`)}>
-            {props.value === true ? <CheckCircle /> : <XCircle /> }
-        </button>
+        <>
+            {props.value === true ? <CheckCircle color='green' size={imgSize} /> : <XCircle color='red' size={imgSize} />}
+        </>
     )
 }

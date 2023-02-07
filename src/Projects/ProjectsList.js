@@ -21,8 +21,8 @@ export default function ProjectsList() {
             .then(response => {
                 console.log('/api/project/ response:');
                 console.log(response);
-                // add view and edit using project.id to assist in routing links
-                const listData = response.data.map(o => ({...o, view: o.id, edit: o.id})).map(selectKeys(keepKeys));
+                // add view and edit using project.id to assist in routing
+                const listData = response.data.map(o => ({...o, view: `/project/${o.id}/`, edit: `/project/${o.id}/edit/`})).map(selectKeys(keepKeys));
                 setProjectsList(listData);
             })
             .catch(error => {

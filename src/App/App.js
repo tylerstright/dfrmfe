@@ -4,8 +4,12 @@ import Home from '../Home/Home';
 import Footer from './Footer';
 import SignIn from '../SignIn/SignIn';
 import NavBar from '../NavBar/NavBar';
+
 import Projects from '../Projects/Projects';
 import ProjectsList from '../Projects/ProjectsList';
+import ProjectView from '../Projects/ProjectView';
+// import ProjectEdit from '../Projects/ProjectEdit';
+
 import Departments from '../Departments/Departments';
 import Facilities from '../Facilities/Facilities';
 import News from '../News/News';
@@ -23,8 +27,12 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<SignIn user={user} setUser={setUser} />} />
         <Route path="/departments" element={<Departments />} />
+
         <Route path="/projects" element={<Projects />} />
         <Route path="/projects/list" element={<ProjectsList />} />
+        <Route path="/project/:id/" element={<ProjectView />} />
+        {/* <Route path="/project/:id/edit/" element={<ProjectEdit />} /> */}
+        
         <Route path="/facilities" element={<Facilities />} />
         <Route path="/news" element={<News />} />
         <Route path="/documents" element={<Documents />} />

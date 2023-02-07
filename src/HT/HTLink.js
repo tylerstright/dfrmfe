@@ -41,6 +41,8 @@ export default function HTLink(props) {
                 colHeaders={colHeaders.map(field => toTitleCase(field))}
                 manualColumnResize={true}
                 disableVisualSelection={true}
+                autoColumnSize={false}
+                autoRowSize={false}
                 height="800px"
                 width="1200px"
                 licenseKey="non-commercial-and-evaluation" // for non-commercial use only

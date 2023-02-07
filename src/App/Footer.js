@@ -48,7 +48,7 @@ export default function Footer() {
                             <a className={'p-1'} href="https://www.instagram.com/nezpercetribe/" target="_blank" rel="noreferrer nofollow"><img src={instagram} alt="Instagram" /></a>
                         </Col>
                     </Row>
-                    <Row className={'justify-content-center pb-4'} >
+                    <Row className={'justify-content-center pb-4'}  style={{color:'white'}}>
                         Nez Perce Tribe Department of Fisheries Resources Management. Copyright © 2022 Nez Perce Tribe. All rights reserved.
                     </Row>
                 </Container>

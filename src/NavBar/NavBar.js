@@ -28,7 +28,7 @@ export default function NavBar(props) {
                         <Link to='/profile' className={'dropdown-item'}>User Profile</Link>
                         <Link to='/' className={'dropdown-item'}>Sign Out</Link>
                         <NavDropdown.Divider></NavDropdown.Divider>
-                        <NavDropdown.ItemText><strong>Edit Content</strong></NavDropdown.ItemText>
+                        <NavDropdown.ItemText><strong>View Content</strong></NavDropdown.ItemText>
                         <Link to='/projects/list' className={'dropdown-item'}>Projects</Link>
                     </NavDropdown>
                 </Nav>
