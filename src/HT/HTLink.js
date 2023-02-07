@@ -36,9 +36,10 @@ export default function HTLink(props) {
         <div className='container p-5'>
             <button type='button' onClick={() => console.log(props.data)}>log data</button>
             <HotTable
+                tableClassName={'table-striped'}
                 ref={hotRef} // API
                 data={data}
-                colHeaders={colHeaders.map(field => toTitleCase(field))}
+                colHeaders={colHeaders.map(field => (`<span style='font-size:20px'>${toTitleCase(field)}</span>`))}
                 manualColumnResize={true}
                 disableVisualSelection={true}
                 autoColumnSize={false}
@@ -50,12 +51,12 @@ export default function HTLink(props) {
                 {/* We need to loop through, generate the view/edit buttons, and have other fields read Only text. */}
                 {colHeaders.map((column, index) => {
                     if (column === 'view') return (
-                        <HotColumn className='htCenter htMiddle' key={index} data={column} width={75} readOnly={true}>
+                        <HotColumn className='htCenter htMiddle' key={index} data={column} readOnly={true}>
                             <ViewButton hot-renderer />
                         </HotColumn>
                     )
                     if (column === 'edit') return (
-                        <HotColumn className='htCenter htMiddle' key={index} data={column} width={75} readOnly={true}>
+                        <HotColumn className='htCenter htMiddle' key={index} data={column}  readOnly={true}>
                             <EditButton hot-renderer />
                         </HotColumn>
                     )
@@ -63,7 +64,7 @@ export default function HTLink(props) {
                         <HotColumn key={index} data={column} width={500} readOnly={true} />
                     )
                     if (column === 'active') return (
-                        <HotColumn className='htCenter htMiddle' key={index} data={column} width={75} readOnly={true}>
+                        <HotColumn className='htCenter htMiddle' key={index} data={column} readOnly={true}>
                             <ActiveCheck hot-renderer />
                         </HotColumn>
                     )

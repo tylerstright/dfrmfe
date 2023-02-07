@@ -3,19 +3,14 @@ import axios from 'axios';
 import PageHeader from '../Page/PageHeader';
 import Description from '../Page/Description';
 import EmployeeCard from '../Page/EmployeeCard';
-import { useLocation } from 'react-router-dom';
 
 import headerImage from '../images/background.jpg';
 
 export default function ProjectView() {
     const [project, setProject] = useState(null);
-    const location = useLocation();
-
-    var api;
-
-    useEffect(() => {
-        api = `/api${location.state.data.api}`;
-    }, [location])
+    
+    // get API url
+    var api = '/api' + window.location.pathname;
 
     useEffect(() => {
          axios.get(api) // USE THE PROXY!
@@ -37,7 +32,6 @@ export default function ProjectView() {
     return (
         <>
             <PageHeader title={project.name} image={headerImage} />
-            <button onClick={()=> console.log(api)}>test</button>
             <Description description={project.description} />
             <EmployeeCard />
         </>
