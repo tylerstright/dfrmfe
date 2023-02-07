@@ -14,15 +14,27 @@ export default function NavBar(props) {
                 </Navbar.Brand>
                 <Nav className={'me-auto'} >
                     <Link to='/' className={'nav-link'} >Home</Link>
-                    <Link to='/departments' className={'nav-link'} >Departments</Link>
-                    <Link to='/projects' className={'nav-link'} >Projects</Link>
-                    <Link to='/facilities' className={'nav-link'} >Facilities</Link>
-                    <Link to='/news' className={'nav-link'} >News</Link>
-                    <Link to='/documents' className={'nav-link'} >Documents</Link>
+                    <Link to='/status/' className={'nav-link'} >Snake Basin Fish Status</Link>
+                    <Link to='/news/' className={'nav-link'} >News</Link>
+                    <Link to='/docs/' className={'nav-link'} >Documents</Link>
+
+                    <NavDropdown title="Links" >
+                        <Link to='https://www.cbr.washington.edu/dart' target='_blank' className={'dropdown-item'}>DART</Link>
+                        <Link to='https://npt-cdms.nezperce.org/login.html#!/login' target='_blank' className={'dropdown-item'}>CDMS</Link>
+                        <Link to='https://nptfisheries.shinyapps.io/kus-data/' target='_blank' className={'dropdown-item'}>Kus Data</Link>
+                        <Link to='https://nptfisheries.shinyapps.io/PITtrackR/' target='_blank' className={'dropdown-item'}>PitTrackR</Link>
+                    </NavDropdown>
+                    <NavDropdown title="About Us" >
+                        <Link to='/project/' className={'dropdown-item'}>Project Details</Link>
+                    </NavDropdown>
                 </Nav>
 
+
+
+
+
                 {/* Should show "Sign In" until we do, then different menu. */}
-                <Nav className={'ml-auto'}> 
+                <Nav className={'ml-auto'}>
                     <Link to='/login' className={'nav-link'} >Sign In</Link>
                     <NavDropdown title="UserName" >
                         <Link to='/profile' className={'dropdown-item'}>User Profile</Link>
