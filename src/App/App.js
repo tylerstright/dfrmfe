@@ -38,7 +38,12 @@ export default function App() {
         <Route path="/project/list" element={<ListPage />} />
         <Route path="/project/:id/" element={<ProjectView />} />
         {/* <Route path="/project/:id/edit/" element={<ProjectEdit />} /> */}
-        
+
+        {/* <Route path="/employee/list" element={<ListPage />} /> */}
+        <Route path="/division/list" element={<ListPage />} />
+
+
+
         <Route path="/facility" element={<Facilities />} />
         <Route path="/news" element={<News />} />
         <Route path="/docs/" element={<Documents />} />

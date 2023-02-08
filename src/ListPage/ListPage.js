@@ -6,16 +6,25 @@ import ListTable from '../Tables/ListTable';
 import { selectKeys } from '../functions/selectKeys';
 
 import headerImage from '../images/background.jpg';
+import toTitleCase from '../functions/toTitleCase';
 
 export default function ListPage() {
     const [list, setList] = useState(null);
+    const [api, setApi] = useState(null);
 
     // get API url
-    var api = '/api' + window.location.pathname;
-
-    // query api based on url
     useEffect(() => {
+        setApi('/api' + window.location.pathname)
+    }, [window.location.pathname])
 
+    // pull title from url
+    var title = toTitleCase(window.location.pathname
+        .substring(1, window.location.pathname.length-1) // remove leading and trailing slash
+        .replace(/\//g, ' ') // replace middle slash
+        );
+
+    // // query api based on url
+    useEffect(() => {
         axios.get(api) // USE THE PROXY!
             .then(response => {
                 // console.log('/api/project/ response:');
@@ -35,9 +44,9 @@ export default function ListPage() {
 
     return (
         <>
-            <button type='button' onClick={()=> console.log(list)}>list</button>
-            <PageHeader title='List Page' image={headerImage} />
-            {/* <HTLink data={projectsList} /> */}
+            <button type='button' onClick={()=> console.log(api)}>api</button>
+            {/* <button type='button' onClick={()=> console.log(list)}>list</button> */}
+            <PageHeader title={title} image={headerImage} />
             <ListTable data={list} />
         </>
     )
