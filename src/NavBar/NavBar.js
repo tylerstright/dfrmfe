@@ -36,9 +36,10 @@ export default function NavBar(props) {
                         <Link to='/' className={'dropdown-item'}>Sign Out</Link>
                         <NavDropdown.Divider></NavDropdown.Divider>
                         <NavDropdown.ItemText><strong>View Content</strong></NavDropdown.ItemText>
-                        <Link to='/project/list/' className={'dropdown-item'}>Projects</Link>
                         {/* <Link to='/employee/list/' className={'dropdown-item'}>Employees</Link> */}
+                        <Link to='/project/list/' className={'dropdown-item'}>Projects</Link>
                         <Link to='/division/list/' className={'dropdown-item'}>Divisions</Link>
+                        <Link to='/department/list/' className={'dropdown-item'}>Departments</Link>
                     </NavDropdown>
                 </Nav>
             </Navbar.Collapse>

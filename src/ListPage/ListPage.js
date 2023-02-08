@@ -35,7 +35,7 @@ export default function ListPage() {
         if (listType === 'division') setKeys(['name', 'director', 'deputy director', 'administrative assistant', 'facility', 'view', 'edit']);
         if (listType === 'project') setKeys(['name', 'created', 'active', 'view', 'edit']);
         if (listType === 'division') setKeys(['name', 'director', 'deputy director', 'administrative assistant', 'facility', 'view', 'edit']);
-        if (listType === 'departments') setKeys(['name', 'manager', 'deputy manager', 'administrative assistant', 'facility', 'view', 'edit']);
+        if (listType === 'department') setKeys(['name', 'manager', 'deputy manager', 'administrative assistant', 'facility', 'view', 'edit']);
 
     }, [listType])
 
