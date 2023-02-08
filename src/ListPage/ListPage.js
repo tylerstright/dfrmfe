@@ -9,34 +9,51 @@ import headerImage from '../images/background.jpg';
 import toTitleCase from '../functions/toTitleCase';
 
 export default function ListPage() {
+    const [listType, setListType] = useState(null); //project, divison, etc.
     const [list, setList] = useState(null);
     const [api, setApi] = useState(null);
+    const [keys, setKeys] = useState(null);
 
-    // get API url
+    // 1. get listType
     useEffect(() => {
-        setApi('/api' + window.location.pathname)
+        // clear the shiz
+        setList(null);
+        setApi(null);
+        setKeys(null)
+        // reset listType
+        setListType(window.location.pathname.split('/')[1]);
     }, [window.location.pathname])
 
-    // pull title from url
-    var title = toTitleCase(window.location.pathname
-        .substring(1, window.location.pathname.length-1) // remove leading and trailing slash
-        .replace(/\//g, ' ') // replace middle slash
-        );
-
-    // // query api based on url
+    // 2. get API url and keys
     useEffect(() => {
-        axios.get(api) // USE THE PROXY!
-            .then(response => {
-                // console.log('/api/project/ response:');
-                console.log(response);
-                // add view and edit using project.id to assist in routing
-                // const listData = response.data.map(o => ({...o, view: `/project/${o.id}/`, edit: `/project/${o.id}/edit/`})).map(selectKeys(keepKeys));?
-                setList(response.data);
-            })
-            .catch(error => {
-                console.log(error);
-            });
-    }, [api])
+        console.log('Setting keys and API for listType: ' + listType);
+        // url: /project/list/
+        // api: /api/project/
+        setApi(`/api/${listType}/`)
+        console.log('API set to: ' + api);
+        // keys
+        if (listType === 'division') setKeys(['name', 'director', 'deputy director', 'administrative assistant', 'facility', 'view', 'edit']);
+        if (listType === 'project') setKeys(['name', 'created', 'active', 'view', 'edit']);
+        if (listType === 'division') setKeys(['name', 'director', 'deputy director', 'administrative assistant', 'facility', 'view', 'edit']);
+        if (listType === 'departments') setKeys(['name', 'manager', 'deputy manager', 'administrative assistant', 'facility', 'view', 'edit']);
+
+    }, [listType])
+
+    // query api based on url
+    useEffect(() => {
+        // if all values exist, fetch.
+        if (api && listType && keys) {
+            axios.get(api) // USE THE PROXY!
+                .then(response => {
+                    console.log(response);
+                    // add view and edit using project.id to assist in routing
+                    setList(response.data.map(o => ({ ...o, view: `/${listType}/${o.id}/`, edit: `/${listType}/${o.id}/edit/` })).map(selectKeys(keys)));
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        }
+    }, [api, listType, keys])
 
     if (!list) {
         return <></>;
@@ -44,9 +61,7 @@ export default function ListPage() {
 
     return (
         <>
-            <button type='button' onClick={()=> console.log(api)}>api</button>
-            {/* <button type='button' onClick={()=> console.log(list)}>list</button> */}
-            <PageHeader title={title} image={headerImage} />
+            <PageHeader title={`${toTitleCase(listType)} List`} image={headerImage} />
             <ListTable data={list} />
         </>
     )
