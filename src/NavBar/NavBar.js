@@ -8,7 +8,7 @@ import NPTlogos from '../images/NPTlogos2.png';
 
 export default function NavBar(props) {
     return (
-        <Navbar bg="dark" variant='dark' expand="lg" style={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
+        <Navbar bg="dark" variant='dark' expand="lg" className='sticky-top' style={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
             <Navbar.Brand >
                 <img src={NPTlogos} width='100%' height='50px' className="d-inline-block align-top" alt='Nez Perce Tribe Logos'></img>
             </Navbar.Brand>
@@ -36,7 +36,7 @@ export default function NavBar(props) {
                         <Link to='/' className={'dropdown-item'}>Sign Out</Link>
                         <NavDropdown.Divider></NavDropdown.Divider>
                         <NavDropdown.ItemText><strong>View Content</strong></NavDropdown.ItemText>
-                        {/* <Link to='/employee/list/' className={'dropdown-item'}>Employees</Link> */}
+                        <Link to='/employee/list/' className={'dropdown-item'}>Employees</Link>
                         <Link to='/project/list/' className={'dropdown-item'}>Projects</Link>
                         <Link to='/division/list/' className={'dropdown-item'}>Divisions</Link>
                         <Link to='/department/list/' className={'dropdown-item'}>Departments</Link>

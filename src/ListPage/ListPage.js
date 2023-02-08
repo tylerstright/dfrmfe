@@ -4,6 +4,8 @@ import PageHeader from '../Page/PageHeader';
 import ListTable from '../Tables/ListTable';
 
 import { selectKeys } from '../functions/selectKeys';
+import { flatten } from '../functions/flatten';
+import { simplifyKeys } from '../functions/simplifyKeys';
 
 import headerImage from '../images/background.jpg';
 import toTitleCase from '../functions/toTitleCase';
@@ -32,7 +34,9 @@ export default function ListPage() {
         setApi(`/api/${listType}/`)
         console.log('API set to: ' + api);
         // keys
-        if (listType === 'division') setKeys(['name', 'director', 'deputy director', 'administrative assistant', 'facility', 'view', 'edit']);
+        // if (listType === 'employee') setKeys(['name', 'title', 'work phone', 'mobile phone', 'active', 'view', 'edit']);
+        if (listType === 'employee') setKeys(['first_name', 'title', 'work phone', 'mobile phone', 'active', 'view', 'edit']);
+
         if (listType === 'project') setKeys(['name', 'created', 'active', 'view', 'edit']);
         if (listType === 'division') setKeys(['name', 'director', 'deputy director', 'administrative assistant', 'facility', 'view', 'edit']);
         if (listType === 'department') setKeys(['name', 'manager', 'deputy manager', 'administrative assistant', 'facility', 'view', 'edit']);
@@ -46,8 +50,17 @@ export default function ListPage() {
             axios.get(api) // USE THE PROXY!
                 .then(response => {
                     console.log(response);
+                    // console.log(response.data[0]);
+                    var flatResponse = [];
+                    response.data.forEach(x => flatResponse.push(simplifyKeys(flatten(x))));
+                    // console.log(flatten(response.data[0]));
+                    console.log(flatResponse);
+
                     // add view and edit using project.id to assist in routing
-                    setList(response.data.map(o => ({ ...o, view: `/${listType}/${o.id}/`, edit: `/${listType}/${o.id}/edit/` })).map(selectKeys(keys)));
+                    let readyList = flatResponse.map(o => ({ ...o, view: `/${listType}/${o.id}/`, edit: `/${listType}/${o.id}/edit/` })).map(selectKeys(keys))
+                    console.log(readyList);
+                    setList(readyList);
+                    // setList(response.data.map(o => ({ ...o, view: `/${listType}/${o.id}/`, edit: `/${listType}/${o.id}/edit/` })).map(selectKeys(keys)));
                 })
                 .catch(error => {
                     console.log(error);

@@ -12,7 +12,7 @@ export default function ListTable(props) {
     return (
         <div className='container p-5'>
 
-            <table className="table table-striped table-dark">
+            <table className="table table-striped table-light">
                 <thead>
                     <tr>
                         {/* check permissions to show edit button */}
