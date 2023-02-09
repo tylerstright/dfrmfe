@@ -19,7 +19,7 @@ export default function TextInput(props) {
 
     return (
         <Form.Group className="mb-3" controlId={controlId}>
-            <Form.Label>{props.label}</Form.Label>
+            {props.includeLabel === false? null : <Form.Label>{props.label}</Form.Label>}
             <Form.Control type={props.type} placeholder={props.placeholder} />
         </Form.Group>
     )

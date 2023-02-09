@@ -14,8 +14,8 @@ export default function MultiSelectInput(props) {
   useEffect(() => {
     axios.get(props.api) // USE THE PROXY!
       .then(response => {
-        console.log('multiresponse ');
-        console.log(response.data);
+        // console.log('multiresponse ');
+        // console.log(response.data);
         setData(response.data);
       })
       .catch(error => {

@@ -14,3 +14,12 @@ p {
 h1.title {
     color: #416983;
 }
+
+
+#bigCheckBox {
+    height: 30px;
+    width: 30px;
+    margin-left:20px;
+    align-content: 'center';
+
+}

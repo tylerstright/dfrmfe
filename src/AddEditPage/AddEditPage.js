@@ -31,7 +31,7 @@ export default function EditPage() {
         // url: /project/list/
         // api: /api/project/
         if (target && id) {
-            setApi(`/api/${target}/${id}/`)
+            setApi(`/api/${target}/${id}/edit/`)
             console.log('API set to: ' + api);
         }
     }, [target, id])

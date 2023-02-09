@@ -11,7 +11,7 @@ export default function SelectInput(props) {
     useEffect(() => {
         axios.get(props.api) // USE THE PROXY!
             .then(response => {
-                console.log(response.data);
+                // console.log(response.data);
                 setData(response.data);
             })
             .catch(error => {
@@ -25,7 +25,7 @@ export default function SelectInput(props) {
 
     return (
         <Form.Select aria-label={props.label}>
-            <option>{props.label}</option>
+            <option>{props.includeLabel === false ? null : props.label}</option>
             {data.map(rec => (<option key={rec.id} value={rec.id}>{rec.id}</option>))}
         </Form.Select>
     )
