@@ -1,5 +1,5 @@
 import React from 'react';
-import Table from 'react-bootstrap';
+import { Container, Table } from 'react-bootstrap';
 import { ActiveCheck, EditButton, ViewButton } from '../HT/HTButtons';
 
 import toTitleCase from '../functions/toTitleCase';
@@ -11,9 +11,8 @@ export default function ListTable(props) {
     }
 
     return (
-        <div className='container p-5'>
-
-            <table className="table table-striped table-light">
+        <Container className='p-5'>
+            <Table striped bordered variant='dark'>
                 <thead>
                     <tr>
                         {/* check permissions to show edit button */}
@@ -32,9 +31,9 @@ export default function ListTable(props) {
                                         case 'edit':
                                             return <td><EditButton value={val} /></td>;
                                         case 'active':
-                                            return <td className='align-middle'><ActiveCheck value= {val} /></td>
+                                            return <td className='align-middle'><ActiveCheck value={val} /></td>
                                         default:
-                                            return<td>{val}</td>;
+                                            return <td>{val}</td>;
                                     }
 
                                 })}
@@ -42,7 +41,7 @@ export default function ListTable(props) {
                         )
                     })}
                 </tbody>
-            </table>
-        </div>
+            </Table>
+        </Container>
     )
 }
