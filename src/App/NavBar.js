@@ -1,13 +1,12 @@
 import React from 'react';
+import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import { Nav, NavDropdown } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import NPTlogos from '../images/NPTlogos2.png';
 
-
-import Container from 'react-bootstrap/Container';
-
 // https://react-bootstrap.github.io/components/navbar/
+// https://react-bootstrap.github.io/components/dropdowns/
 
 export default function NavBar(props) {
     return (

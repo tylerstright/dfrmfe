@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 
 import { Form } from 'react-bootstrap';
 
-//https://react-bootstrap.github.io/forms/form-text/
+// https://react-bootstrap.github.io/forms/form-text/
 
 export default function TextInput(props) {
 

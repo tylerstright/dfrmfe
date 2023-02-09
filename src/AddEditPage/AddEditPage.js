@@ -16,7 +16,7 @@ export default function EditPage() {
     const [api, setApi] = useState(null);
     const [data, setData] = useState(null);
 
-    // 1. get listType
+    // 1. get target and id
     useEffect(() => {
         // clear the shiz
         setApi(null);
@@ -26,7 +26,7 @@ export default function EditPage() {
         setId(window.location.pathname.split('/')[2]);
     }, [window.location.pathname])
 
-    // 2. get API url and keys
+    // 2. get API url
     useEffect(() => {
         // url: /project/list/
         // api: /api/project/
@@ -36,7 +36,7 @@ export default function EditPage() {
         }
     }, [target, id])
 
-    // query api based on url
+    // 3. API call
     useEffect(() => {
         // if all values exist, fetch.
         if (api && target && id) {
