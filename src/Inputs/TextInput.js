@@ -11,7 +11,6 @@ export default function TextInput(props) {
 
     useEffect(() => {
         controlId = props.label.replace(' ', '_').toLowerCase();
-        console.log(controlId);
     }, [props])
 
     if (!props) {

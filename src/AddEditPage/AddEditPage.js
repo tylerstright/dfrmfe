@@ -52,8 +52,8 @@ export default function EditPage() {
     }, [api, target, id])
 
     function testTypes(data) {
-        for(let i of Object.keys(data)) {
-            console.log(typeof(i));
+        for (let i of Object.keys(data)) {
+            console.log(typeof (i));
         }
     }
 
@@ -66,11 +66,11 @@ export default function EditPage() {
             <PageHeader title={`Add/Edit ${toTitleCase(target)}`} image={headerImage} />
             <button onClick={() => console.log(data)}>data</button>
             <button onClick={() => testTypes(data)}>types</button>
-            
+
             <Container>
                 <ProjectForm />
             </Container>
-
+            <br /><br />
 
         </>
     )

@@ -9,7 +9,7 @@ export default function CheckboxInput(props) {
     }
 
     return (
-        <div key={props.key} className="mb-3">
+        <div className="my-3">
             <Form.Check
                 id={props.id}
                 label={props.label}
