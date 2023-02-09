@@ -2,6 +2,11 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import PageHeader from '../Page/PageHeader';
 
+import ProjectForm from '../Forms/ProjectForm';
+
+import { Container } from 'react-bootstrap';
+
+
 import headerImage from '../images/background.jpg';
 import toTitleCase from '../functions/toTitleCase';
 
@@ -23,8 +28,6 @@ export default function EditPage() {
 
     // 2. get API url and keys
     useEffect(() => {
-        console.log('target: '+target);
-        console.log('id: '+id);
         // url: /project/list/
         // api: /api/project/
         if (target && id) {
@@ -39,13 +42,20 @@ export default function EditPage() {
         if (api && target && id) {
             axios.get(api) // USE THE PROXY!
                 .then(response => {
-                    console.log(response);
+                    console.log(response.data);
+                    setData(response.data);
                 })
                 .catch(error => {
                     console.log(error);
                 });
         }
     }, [api, target, id])
+
+    function testTypes(data) {
+        for(let i of Object.keys(data)) {
+            console.log(typeof(i));
+        }
+    }
 
     if (!data) {
         return <></>;
@@ -54,7 +64,14 @@ export default function EditPage() {
     return (
         <>
             <PageHeader title={`Add/Edit ${toTitleCase(target)}`} image={headerImage} />
-            <button onClick={()=> console.log(data)}>data</button>
+            <button onClick={() => console.log(data)}>data</button>
+            <button onClick={() => testTypes(data)}>types</button>
+            
+            <Container>
+                <ProjectForm />
+            </Container>
+
+
         </>
     )
 }
