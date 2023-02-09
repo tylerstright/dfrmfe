@@ -1,4 +1,5 @@
 import React from 'react';
+import Table from 'react-bootstrap';
 import { ActiveCheck, EditButton, ViewButton } from '../HT/HTButtons';
 
 import toTitleCase from '../functions/toTitleCase';
