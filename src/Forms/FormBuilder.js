@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import axios from 'axios';
+// import axios from 'axios';
 
 import HiddenId from './Inputs';
 import TextInput from '../Inputs/TextInput';
@@ -13,7 +13,7 @@ import DateInput from '../Inputs/DateInput';
 
 //https://www.freecodecamp.org/news/how-to-create-forms-in-react-using-react-hook-form/
 
-export default function HookForm(props) {
+export default function FormBuilder({ options }) {
 
     const {
         register,
@@ -24,26 +24,22 @@ export default function HookForm(props) {
     const onSubmit = (data) => {
         console.log('HookForm Submit:')
         console.log(data);
-
-        axios.put('/api/project/2/edit/', data)
-      .then(response => {
-        console.log(response);
-      })
-      .catch(error => {
-        return error;
-      });
     };
 
+    // const fieldArray = [
+    //     {name:}
+    // ]
+
     return (
-        <Container className='my-3' style={{ backgroundColor: 'chartreuse' }}>
-            <button onClick={()=> console.log(props.data)}>props.data</button>
+        <Container className='my-3' style={{ backgroundColor: 'hotpink' }}>
+            <button onClick={() => console.log(options)}>FormBuilder options</button>
 
             <Form onSubmit={handleSubmit(onSubmit)}>
 
-                <HiddenId 
+                {/* <HiddenId 
                     id={2}
                     register={register} 
-                    />
+                    /> */}
 
                 {/* <TextInput
                     name='emailField'

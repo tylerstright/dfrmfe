@@ -7,7 +7,6 @@ import HookForm from '../Forms/HookForm';
 
 import { useLocation } from 'react-router';
 
-
 import headerImage from '../images/background.jpg';
 import toTitleCase from '../functions/toTitleCase';
 
@@ -82,7 +81,7 @@ export default function EditPage() {
 
     return (
         <>
-            <PageHeader title={`Add/Edit ${toTitleCase(target)}`} image={headerImage} />
+            <PageHeader title={`Edit ${toTitleCase(target)}`} image={headerImage} />
             <button onClick={() => console.log(data)}>data</button>
             <button onClick={getOptions}>options request</button>
             <button onClick={() => console.log(location.pathname)}>location.pathname</button>

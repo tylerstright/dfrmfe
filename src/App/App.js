@@ -7,7 +7,9 @@ import NavBar from './NavBar';
 
 import StatusPage from '../StatusPage/StatusPage';
 import ListPage from '../ListPage/ListPage';
-import AddEditPage from '../AddEditPage/AddEditPage';
+import EditPage from '../AddEditPage/EditPage';
+import AddPage from '../AddEditPage/AddPage';
+
 
 import Projects from '../Projects/Projects';
 import ProjectView from '../Projects/ProjectView';
@@ -39,8 +41,10 @@ export default function App() {
         <Route path="/division/list" element={<ListPage />} />
         <Route path="/department/list" element={<ListPage />} />
 
-        <Route path="/project/new/" element={<AddEditPage />} />
-        <Route path="/project/:id/edit/" element={<AddEditPage />} />
+        <Route path="/division/new/" element={<AddPage />} />
+        <Route path="/project/new/" element={<AddPage />} />
+
+        <Route path="/project/:id/edit/" element={<EditPage />} />
         
 
 
