@@ -1,26 +1,25 @@
-import { useEffect } from 'react';
-
+import React from 'react';
 import { Form } from 'react-bootstrap';
 
 // https://react-bootstrap.github.io/forms/form-text/
+// https://jujuontheweb.medium.com/how-to-use-react-hook-form-with-your-custom-form-components-a86a1a77cf3c
 
-export default function TextInput(props) {
-
-
-    let controlId; 
-
-    useEffect(() => {
-        controlId = props.label.replace(' ', '_').toLowerCase();
-    }, [props])
-
-    if (!props) {
-        return <></>;
-    }
+export default function TextInput({ name, label, type, placeholder, register, errors, validationSchema, required, rows }) {
 
     return (
-        <Form.Group className="mb-3" controlId={controlId}>
-            {props.includeLabel === false? null : <Form.Label>{props.label}</Form.Label>}
-            <Form.Control type={props.type} placeholder={props.placeholder} />
+        <Form.Group className="mb-3" controlId={name}>
+            <Form.Label>
+                {label}
+                {required && '*'}
+                </Form.Label>
+            <Form.Control
+                type={type}
+                placeholder={placeholder}
+                rows= {rows ? rows : null }
+                {...register(name, validationSchema)}
+            />
+            {errors[name] && <p className="errorMsg">{errors[name].message}</p>}
+
         </Form.Group>
     )
 }

@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import CSRFtoken from './CSRFtoken';
 
+import Cookies from 'js-cookie';
 
 export default function SignIn(props) {
 
@@ -50,16 +51,40 @@ export default function SignIn(props) {
             });
     }
 
+    function tryUsers() {
+        const csrftoken = Cookies.get('csrftoken');
+
+        // axios.get('/api/employee/', {
+        // axios.get('/api/employee/2/', {
+        // axios.options('/api/employee/' //,
+        axios.head('/api/employee/' //,
+        // {
+            //     headers: {
+            //         "X-CSRFToken": csrftoken,  // django will convert this into "HTTP_X_CSRFTOKEN", which is the default CSRF_HEADER_NAME.
+            //         'Accept': 'application/json',
+            //         'Content-Type': 'application/json'
+            //     }
+            // }
+        )
+            .then(response => { // success
+                console.log(response);
+            })
+            .catch(error => { // failure
+                console.log(error);
+            });
+    }
+
     return (
         <Container>
             <br />
             <Row>
                 <Col></Col>
                 <Col>
+                    <button onClick={tryUsers}>tryAPI w/ token</button>
                     <h1 className={'text-center'} style={{ color: 'black' }}>Sign In</h1>
                     <p className={'text-center'} style={{ color: 'black' }}>If you have not created an account, please <a href='#'>sign up</a>!</p>
                     <form action={'/accounts/login/'} method={'post'} >
-                        <CSRFtoken />
+                        {/* <CSRFtoken /> */}
                         <input id={'login'} name='login' type="email" className="form-control" aria-describedby="emailHelp" placeholder="Enter email" />
                         <input id={'password'} name='password' type="password" className="form-control" placeholder="Password" />
                         <button type='submit'>Send</button>

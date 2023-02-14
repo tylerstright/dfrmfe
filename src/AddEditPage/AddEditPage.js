@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import PageHeader from '../Page/PageHeader';
 
-import ProjectForm from '../Forms/ProjectForm';
+// import ProjectForm from '../Forms/ProjectForm';
+import HookForm from '../Forms/HookForm';
 
+import { useLocation } from 'react-router';
 import { Container } from 'react-bootstrap';
 
 
@@ -16,23 +18,25 @@ export default function EditPage() {
     const [api, setApi] = useState(null);
     const [data, setData] = useState(null);
 
+    const location = useLocation();
+
     // 1. get target and id
     useEffect(() => {
         // clear the shiz
         setApi(null);
         setData(null);
         // reset listType
-        setTarget(window.location.pathname.split('/')[1]);
-        setId(window.location.pathname.split('/')[2]);
-    }, [window.location.pathname])
+        setTarget(location.pathname.split('/')[1]);
+        setId(location.pathname.split('/')[2]);
+    }, [location.pathname])
 
     // 2. get API url
     useEffect(() => {
         // url: /project/list/
         // api: /api/project/
         if (target && id) {
-            setApi(`/api/${target}/${id}/edit/`)
-            console.log('API set to: ' + api);
+            setApi(`/api/${target}/${id}/`)
+            // console.log('API set to: ' + api);
         }
     }, [target, id])
 
@@ -51,10 +55,26 @@ export default function EditPage() {
         }
     }, [api, target, id])
 
-    function testTypes(data) {
-        for (let i of Object.keys(data)) {
-            console.log(typeof (i));
-        }
+    function getOptions() {
+        console.log('fire')
+        axios.options(api) // USE THE PROXY!
+            .then(response => {
+                console.log(response);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
+
+    function newAPI() {
+        console.log('fire')
+        axios.post('/api/division/new/') // USE THE PROXY!
+            .then(response => {
+                console.log(response);
+            })
+            .catch(error => {
+                console.log(error);
+            });
     }
 
     if (!data) {
@@ -65,13 +85,12 @@ export default function EditPage() {
         <>
             <PageHeader title={`Add/Edit ${toTitleCase(target)}`} image={headerImage} />
             <button onClick={() => console.log(data)}>data</button>
-            <button onClick={() => testTypes(data)}>types</button>
-
-            <Container>
-                <ProjectForm />
-            </Container>
-            <br /><br />
-
+            <button onClick={getOptions}>options request</button>
+            <button onClick={() => console.log(location.pathname)}>location.pathname</button>
+            <button onClick={newAPI}>new division api</button>
+                <h1>Hook Form below...</h1>
+                {/* <ProjectForm /> */}
+                <HookForm />
         </>
     )
 }

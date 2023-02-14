@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router';
 import axios from 'axios';
 import PageHeader from '../Page/PageHeader';
 import ListTable from '../Tables/ListTable';
@@ -16,6 +17,8 @@ export default function ListPage() {
     const [api, setApi] = useState(null);
     const [keys, setKeys] = useState(null);
 
+    const location = useLocation();
+
     // 1. get target
     useEffect(() => {
         // clear the shiz
@@ -23,8 +26,8 @@ export default function ListPage() {
         setApi(null);
         setKeys(null)
         // reset target
-        setTarget(window.location.pathname.split('/')[1]);
-    }, [window.location.pathname])
+        setTarget(location.pathname.split('/')[1]);
+    }, [location.pathname])
 
     // 2. get API url and keys
     useEffect(() => {
