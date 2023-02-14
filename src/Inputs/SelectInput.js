@@ -9,7 +9,7 @@ export default function SelectInput(props) {
     const [data, setData] = useState(null);
 
     useEffect(() => {
-        axios.get(props.api) // USE THE PROXY!
+        axios.get(api) // USE THE PROXY!
             .then(response => {
                 // console.log(response.data);
                 setData(response.data);
@@ -17,7 +17,7 @@ export default function SelectInput(props) {
             .catch(error => {
                 return error;
             });
-    }, [props.api])
+    }, [api])
 
     if (!data) {
         return <></>;

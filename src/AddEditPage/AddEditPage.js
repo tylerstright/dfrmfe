@@ -6,7 +6,6 @@ import PageHeader from '../Page/PageHeader';
 import HookForm from '../Forms/HookForm';
 
 import { useLocation } from 'react-router';
-import { Container } from 'react-bootstrap';
 
 
 import headerImage from '../images/background.jpg';
@@ -88,8 +87,6 @@ export default function EditPage() {
             <button onClick={getOptions}>options request</button>
             <button onClick={() => console.log(location.pathname)}>location.pathname</button>
             <button onClick={newAPI}>new division api</button>
-                <h1>Hook Form below...</h1>
-                {/* <ProjectForm /> */}
                 <HookForm />
         </>
     )

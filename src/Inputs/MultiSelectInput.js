@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { Col, Form } from 'react-bootstrap';
+import axios from 'axios';
 
 // https://react-bootstrap.github.io/forms/form-text/
 
-export default function MultiSelectInput(props) {
+export default function MultiSelectInput({ name, label, api, register, errors, validationSchema, required }) {
   const [field, setField] = useState([]);
   const [data, setData] = useState(null);
 
-  let controlId;
-
-  // auto loading employees currently 2/9/23
+  // hit provided API
   useEffect(() => {
-    axios.get(props.api) // USE THE PROXY!
+    axios.get(api) // USE THE PROXY!
       .then(response => {
         // console.log('multiresponse ');
         // console.log(response.data);
@@ -21,22 +19,28 @@ export default function MultiSelectInput(props) {
       .catch(error => {
         return error;
       });
-  }, [props.api])
-
-  useEffect(() => {
-    controlId = props.label.replace(' ', '_').toLowerCase();
-  }, [props])
+  }, [api])
 
   if (!data) {
-    return <></>;
+    return <></>
   }
 
   return (
-    <Form.Group as={Col} controlId={controlId}>
-      <Form.Label>{props.label}</Form.Label>
-      <Form.Control as="select" multiple value={field} onChange={e => setField([].slice.call(e.target.selectedOptions).map(item => item.value))}>
+    <Form.Group as={Col} controlId={name}>
+      <Form.Label>
+        {label}
+        {required && '*'}
+      </Form.Label>
+      <Form.Control
+        as="select"
+        multiple
+        value={field}
+        onChange={e => setField([].slice.call(e.target.selectedOptions).map(item => item.value))}
+        {...register(name, validationSchema)}
+      >
         {data.map(emp => (<option key={emp.id} value={emp.id}>{emp.id}</option>))}
       </Form.Control>
+      {errors[name] && <p className="errorMsg">{errors[name].message}</p>}
     </Form.Group>
   )
 }

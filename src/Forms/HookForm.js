@@ -5,9 +5,9 @@ import { useForm } from 'react-hook-form';
 
 import TextInput from '../Inputs/TextInput';
 import TextAreaInput from '../Inputs/TextAreaInput';
-// import MultiSelectInput from '../Inputs/MultiSelectInput';
+import MultiSelectInput from '../Inputs/MultiSelectInput';
 // import ImageInput from '../Inputs/ImageInput';
-// import DateInput from '../Inputs/DateInput';
+import DateInput from '../Inputs/DateInput';
 // import SelectInput from '../Inputs/SelectInput';
 
 //https://www.freecodecamp.org/news/how-to-create-forms-in-react-using-react-hook-form/
@@ -26,9 +26,8 @@ export default function HookForm(props) {
     };
 
     return (
-        <Container style={{ backgroundColor: 'chartreuse' }}>
+        <Container className='my-3' style={{ backgroundColor: 'chartreuse' }}>
             <Form onSubmit={handleSubmit(onSubmit)}>
-
                 <TextInput
                     name='emailField'
                     label='Email Input'
@@ -47,18 +46,14 @@ export default function HookForm(props) {
                 />
 
                 <TextInput
-                    name='text2'
-                    label='Text Input'
+                    name='project_name' // may be incorrect
+                    label='Project Name'
                     type='text'
-                    placeholder='Six character min text input!'
+                    placeholder='Enter project name'
                     register={register}
                     errors={errors}
                     validationSchema={{
                         required: 'This field requires at least 6 characters!',
-                        // pattern: {
-                        //     value: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/,
-                        //     message:'please enter text2 email'
-                        // }
                         minLength: {
                             value: 6,
                             message: 'Please enter at minimum 6 characters'
@@ -70,7 +65,7 @@ export default function HookForm(props) {
                 <TextAreaInput
                     name='description'
                     label='Text Area Input'
-                    rows= {5}
+                    rows={5}
                     placeholder='Description placeholder...'
                     register={register}
                     errors={errors}
@@ -80,10 +75,39 @@ export default function HookForm(props) {
                     required
                 />
 
+                {/* <MultiSelectInput
+                    name='project_leader'
+                    label='Project Leader'
+                    api='/api/employee/'
+                    register={register}
+                    errors={errors}
+                    validationSchema={{
+                        required: 'Project leader must be selected to continue'
+                    }}
+                    required /> */}
 
-                <Button type='submit' value='Save' size='lg' className='float-end' >Save</Button>
+                <DateInput
+                    name='created'
+                    label='Project Creation Date'
+                    register={register}
+                    errors={errors}
+                    validationSchema={{
+                        required: 'Please select a date'
+                    }}
+                    required
+                />
+
+                <Form.Group className='my-3' controlId='active'>
+                    <Form.Check
+                        type="checkbox"
+                        label="Active Project"
+                        {...register("active")}
+                    />
+                </Form.Group>
+
+
+                <Button className='my-3' type='submit' value='Save' size='lg' >Save</Button>
             </Form>
-            <br />
         </Container>
     )
 }

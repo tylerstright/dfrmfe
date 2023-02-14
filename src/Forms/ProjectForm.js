@@ -18,14 +18,14 @@ export default function ProjectForm(props) {
 
     return (
         <Form>
-            <TextInput type='text' label='Project Name:' placeholder='Enter Project Name' rows={2} />
-            <TextAreaInput type='textarea' label='Project Description:' placeholder={null} rows={'5'} />
+            {/* <TextInput type='text' label='Project Name:' placeholder='Enter Project Name' rows={2} />
+            <TextAreaInput type='textarea' label='Project Description:' placeholder={null} rows={'5'} /> */}
             <MultiSelectInput label={'Project Leader:'} api='/api/employee' />
             <DateInput label='Project Created:' />
-            <Form.Check
+            {/* <Form.Check
                 label={'Active Project'}
                 className={'mb-3 bigCheckBox'}                
-            />
+            /> */}
             <ImageInput label={'Project Image:'} />
             <hr />
             <h2>Sub-Projects</h2>
@@ -49,8 +49,7 @@ export default function ProjectForm(props) {
                 </tbody>
             </Table>
             <hr />
-            <Button type='submit' value='Save' size='lg' className='float-end' >Save</Button>
-            <br /> <br />
+            {/* <Button type='submit' value='Save' size='lg' className='float-end' >Save</Button> */}
         </Form>
     )
 }
