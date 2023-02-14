@@ -83,7 +83,7 @@ export default function HookForm(props) {
                     register={register}
                     errors={errors}
                     validationSchema={{
-                        required: 'Project leader must be selected to continue'
+                        required: 'Select at least one option.'
                     }}
                     required />
 
@@ -106,7 +106,7 @@ export default function HookForm(props) {
                     />
                 </Form.Group>
 
-                <ImageInput
+                {/* <ImageInput
                     name='project_image1'
                     label='Choose Project Image'
                     placeholder='No image chosen.'
@@ -116,7 +116,7 @@ export default function HookForm(props) {
                         required: 'Please choose a project image.'
                     }}
                     required
-                />
+                /> */}
 
 
                 <Button className='my-3' type='submit' value='Save' size='lg' >Save</Button>

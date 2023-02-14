@@ -4,9 +4,8 @@ import { Form } from 'react-bootstrap';
 
 // https://react-bootstrap.github.io/forms/form-text/
 
-export default function SelectInput(props) {
-    // const [field, setField] = useState([]);
-    const [data, setData] = useState(null);
+export default function SelectInput({ name, label, api, register, errors, validationSchema, required }) {
+    const [options, setOptions] = useState(null);
 
     useEffect(() => {
         axios.get(api) // USE THE PROXY!
@@ -19,14 +18,23 @@ export default function SelectInput(props) {
             });
     }, [api])
 
-    if (!data) {
+    if (!options) {
         return <></>;
     }
 
     return (
-        <Form.Select aria-label={props.label}>
-            <option>{props.includeLabel === false ? null : props.label}</option>
-            {data.map(rec => (<option key={rec.id} value={rec.id}>{rec.id}</option>))}
-        </Form.Select>
+        <Form.Group controlId={name} >
+            <Form.Label >
+                {label}
+                {required && '*'}
+            </Form.Label>
+            <Form.Select
+                aria-label={label}
+                {...register(name, validationSchema)}
+            >
+                {options.map(o => (<option key={o.id} value={o.id}>{o.id}</option>))}
+            </Form.Select>
+            {errors[name] && <p className="errorMsg">{errors[name].message}</p>}
+        </Form.Group>
     )
 }

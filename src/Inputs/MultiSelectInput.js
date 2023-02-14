@@ -5,23 +5,22 @@ import axios from 'axios';
 // https://react-bootstrap.github.io/forms/form-text/
 
 export default function MultiSelectInput({ name, label, api, register, errors, validationSchema, required }) {
-  const [field, setField] = useState([]);
-  const [data, setData] = useState(null);
+  const [options, setOptions] = useState(null);
 
   // hit provided API
   useEffect(() => {
     axios.get(api) // USE THE PROXY!
       .then(response => {
-        // console.log('multiresponse ');
         // console.log(response.data);
-        setData(response.data);
+        setOptions(response.data);
       })
       .catch(error => {
         return error;
       });
   }, [api])
 
-  if (!data) {
+
+  if (!options) {
     return <></>
   }
 
@@ -31,16 +30,14 @@ export default function MultiSelectInput({ name, label, api, register, errors, v
         {label}
         {required && '*'}
       </Form.Label>
-      <Form.Control
-        as="select"
-        multiple
-        value={field}
-        onChange={e => setField([].slice.call(e.target.selectedOptions).map(item => item.value))}
+      <Form.Select
+        multiple={true}
         {...register(name, validationSchema)}
       >
-        {data.map(emp => (<option key={emp.id} value={emp.id}>{emp.id}</option>))}
-      </Form.Control>
+        {options.map(o => (<option key={o.id} value={o.id}>{o.id}</option>))}
+      </Form.Select>
       {errors[name] && <p className="errorMsg">{errors[name].message}</p>}
     </Form.Group>
   )
+
 }
