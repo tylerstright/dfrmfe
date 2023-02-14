@@ -20,13 +20,13 @@ export default function ProjectForm(props) {
         <Form>
             {/* <TextInput type='text' label='Project Name:' placeholder='Enter Project Name' rows={2} />
             <TextAreaInput type='textarea' label='Project Description:' placeholder={null} rows={'5'} /> */}
-            <MultiSelectInput label={'Project Leader:'} api='/api/employee' />
-            <DateInput label='Project Created:' />
+            {/* <MultiSelectInput label={'Project Leader:'} api='/api/employee' /> */}
+            {/* <DateInput label='Project Created:' /> */}
             {/* <Form.Check
                 label={'Active Project'}
                 className={'mb-3 bigCheckBox'}                
             /> */}
-            <ImageInput label={'Project Image:'} />
+            {/* <ImageInput label={'Project Image:'} /> */}
             <hr />
             <h2>Sub-Projects</h2>
             <SelectInput label={'Choose Employee'} api='/api/employee/' />

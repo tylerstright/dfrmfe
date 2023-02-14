@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
+import { Link } from 'react-router-dom';
+import { Container } from 'react-bootstrap';
 import axios from 'axios';
 import PageHeader from '../Page/PageHeader';
 import ListTable from '../Tables/ListTable';
@@ -77,7 +79,11 @@ export default function ListPage() {
     return (
         <>
             <PageHeader title={`${toTitleCase(target)} List`} image={headerImage} />
+            <Container className='mt-5 d-flex justify-content-end'>
+                    <Link className="btn btn-primary" to={`/${target}/new/`} >{`Add New ${toTitleCase(target)}`} </Link>
+            </Container>
             <ListTable data={list} />
+
         </>
     )
 }

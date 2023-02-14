@@ -1,8 +1,9 @@
 import React from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-// import axios from 'axios';
+import axios from 'axios';
 
+import HiddenId from './Inputs';
 import TextInput from '../Inputs/TextInput';
 import TextAreaInput from '../Inputs/TextAreaInput';
 import MultiSelectInput from '../Inputs/MultiSelectInput';
@@ -23,11 +24,26 @@ export default function HookForm(props) {
     const onSubmit = (data) => {
         console.log('HookForm Submit:')
         console.log(data);
+
+        axios.put('/api/project/edit/', data)
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        return error;
+      });
     };
 
     return (
         <Container className='my-3' style={{ backgroundColor: 'chartreuse' }}>
+            <button onClick={()=> console.log(props.data)}>props.data</button>
+            
             <Form onSubmit={handleSubmit(onSubmit)}>
+
+                <HiddenId 
+                    id={2}
+                    register={register} 
+                    />
 
                 {/* <TextInput
                     name='emailField'
@@ -93,7 +109,11 @@ export default function HookForm(props) {
                     register={register}
                     errors={errors}
                     validationSchema={{
-                        required: 'Please select a date'
+                        required: 'Please select a date' //,
+                        // pattern: {
+                        //     value: /\d{2}\d{2}\d{4}/,
+                        //     message: 'Date must be MM/DD/YYYY'
+                        // }
                     }}
                     required
                 />
@@ -106,7 +126,7 @@ export default function HookForm(props) {
                     />
                 </Form.Group>
 
-                {/* <ImageInput
+                <ImageInput
                     name='project_image1'
                     label='Choose Project Image'
                     placeholder='No image chosen.'
@@ -116,7 +136,7 @@ export default function HookForm(props) {
                         required: 'Please choose a project image.'
                     }}
                     required
-                /> */}
+                />
 
 
                 <Button className='my-3' type='submit' value='Save' size='lg' >Save</Button>

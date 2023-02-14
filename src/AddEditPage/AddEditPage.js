@@ -87,7 +87,7 @@ export default function EditPage() {
             <button onClick={getOptions}>options request</button>
             <button onClick={() => console.log(location.pathname)}>location.pathname</button>
             <button onClick={newAPI}>new division api</button>
-                <HookForm />
+            <HookForm data={data} />
         </>
     )
 }
