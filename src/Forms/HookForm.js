@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import TextInput from '../Inputs/TextInput';
 import TextAreaInput from '../Inputs/TextAreaInput';
 import MultiSelectInput from '../Inputs/MultiSelectInput';
-// import ImageInput from '../Inputs/ImageInput';
+import ImageInput from '../Inputs/ImageInput';
 import DateInput from '../Inputs/DateInput';
 // import SelectInput from '../Inputs/SelectInput';
 
@@ -28,7 +28,8 @@ export default function HookForm(props) {
     return (
         <Container className='my-3' style={{ backgroundColor: 'chartreuse' }}>
             <Form onSubmit={handleSubmit(onSubmit)}>
-                <TextInput
+
+                {/* <TextInput
                     name='emailField'
                     label='Email Input'
                     type='email'
@@ -43,10 +44,10 @@ export default function HookForm(props) {
                         }
                     }}
                     required
-                />
+                /> */}
 
                 <TextInput
-                    name='project_name' // may be incorrect
+                    name='name'
                     label='Project Name'
                     type='text'
                     placeholder='Enter project name'
@@ -64,7 +65,7 @@ export default function HookForm(props) {
 
                 <TextAreaInput
                     name='description'
-                    label='Text Area Input'
+                    label='Project Description'
                     rows={5}
                     placeholder='Description placeholder...'
                     register={register}
@@ -75,7 +76,7 @@ export default function HookForm(props) {
                     required
                 />
 
-                {/* <MultiSelectInput
+                <MultiSelectInput
                     name='project_leader'
                     label='Project Leader'
                     api='/api/employee/'
@@ -84,7 +85,7 @@ export default function HookForm(props) {
                     validationSchema={{
                         required: 'Project leader must be selected to continue'
                     }}
-                    required /> */}
+                    required />
 
                 <DateInput
                     name='created'
@@ -104,6 +105,18 @@ export default function HookForm(props) {
                         {...register("active")}
                     />
                 </Form.Group>
+
+                <ImageInput
+                    name='project_image1'
+                    label='Choose Project Image'
+                    placeholder='No image chosen.'
+                    register={register}
+                    errors={errors}
+                    validationSchema={{
+                        required: 'Please choose a project image.'
+                    }}
+                    required
+                />
 
 
                 <Button className='my-3' type='submit' value='Save' size='lg' >Save</Button>

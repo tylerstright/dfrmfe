@@ -1,25 +1,22 @@
-import { Row, Form, InputGroup, Button } from 'react-bootstrap';
+import React from 'react';
+import { Form } from 'react-bootstrap';
 
 // https://react-bootstrap.github.io/forms/form-text/
 
-export default function ImageInput(props) {
-
-    if (!props) {
-        return <></>;
-    }
+export default function ImageInput({ name, label, placeholder, register, errors, validationSchema, required }) {
 
     return (
-        <>
-            <Form.Label>{props.label}</Form.Label>
-            <InputGroup className="mb-3" >
-                <Form.Control
-                    type='file'
-                    aria-label="Choose File"
-                    // aria-describedby="basic-addon1"
-                    placeholder='No file chosen'
-                    accept='image'
-                />
-            </InputGroup>
-        </>
+        <Form.Group className='my-3' controlId={name}>
+            <Form.Label>{label}</Form.Label>
+            <Form.Control
+                type='file'
+                // aria-label="Choose File"
+                // aria-describedby="basic-addon1"
+                placeholder={placeholder}
+                accept='image'
+                {...register(name, validationSchema)}
+            />
+            {errors[name] && <p className="errorMsg">{errors[name].message}</p>}
+        </Form.Group>
     )
 }
