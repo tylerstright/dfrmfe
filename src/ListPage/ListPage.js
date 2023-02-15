@@ -36,7 +36,6 @@ export default function ListPage() {
         // url: /project/list/
         // api: /api/project/
         setApi(`/api/${target}/`)
-        console.log('API set to: ' + api);
         // keys
         // if (target === 'employee') setKeys(['name', 'title', 'work phone', 'mobile phone', 'active', 'view', 'edit']);
         if (target === 'employee') setKeys(['first name', 'title', 'work phone', 'mobile phone', 'active', 'view', 'edit']);
@@ -53,18 +52,17 @@ export default function ListPage() {
         if (api && target && keys) {
             axios.get(api) // USE THE PROXY!
                 .then(response => {
-                    console.log(response);
+                    // console.log(response);
                     // console.log(response.data[0]);
                     var flatResponse = [];
                     response.data.forEach(x => flatResponse.push(simplifyKeys(flatten(x))));
                     // console.log(flatten(response.data[0]));
-                    console.log(flatResponse);
+                    // console.log(flatResponse);
 
                     // add view and edit using project.id to assist in routing
                     let readyList = flatResponse.map(o => ({ ...o, view: `/${target}/${o.id}/`, edit: `/${target}/${o.id}/edit/` })).map(selectKeys(keys))
-                    console.log(readyList);
+                    // console.log(readyList);
                     setList(readyList);
-                    // setList(response.data.map(o => ({ ...o, view: `/${target}/${o.id}/`, edit: `/${target}/${o.id}/edit/` })).map(selectKeys(keys)));
                 })
                 .catch(error => {
                     console.log(error);

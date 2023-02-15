@@ -16,7 +16,7 @@ export default function ListTable(props) {
                 <thead>
                     <tr>
                         {/* check permissions to show edit button */}
-                        {Object.keys(props.data[0]).map(field => (<th>{toTitleCase(field)}</th>))}
+                        {Object.keys(props.data[0]).map(field => (<th >{toTitleCase(field)}</th>))}
                     </tr>
                 </thead >
                 <tbody>
@@ -27,13 +27,13 @@ export default function ListTable(props) {
                                     // it will throw an error here because I'm not passing keys.. 2/7/23
                                     switch (Object.keys(rec)[index]) {
                                         case 'view':
-                                            return <td><ViewButton value={val} /></td>;
+                                            return <td ><ViewButton value={val} /></td>;
                                         case 'edit':
-                                            return <td><EditButton value={val} /></td>;
+                                            return <td ><EditButton value={val} /></td>;
                                         case 'active':
                                             return <td className='align-middle'><ActiveCheck value={val} /></td>
                                         default:
-                                            return <td>{val}</td>;
+                                            return <td >{val}</td>;
                                     }
 
                                 })}
