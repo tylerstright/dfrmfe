@@ -33,9 +33,9 @@ export default function NavBar(props) {
                         </NavDropdown>
                     </Nav>
                     <Nav>
-                        <NavLink to='/login' className={'nav-link'} >Sign In</NavLink>
+                        <NavLink to='/accounts/login/' className={'nav-link'} >Sign In</NavLink>
                         <NavDropdown className='ml-auto' title="UserName" id="nav-dropdown" menuVariant='dark'>
-                            <NavDropdown.Item href='/profile'>User Profile</NavDropdown.Item>
+                            <NavDropdown.Item href='/profile/'>User Profile</NavDropdown.Item>
                             <NavDropdown.Item href='/'>Sign Out</NavDropdown.Item>
                             <NavDropdown.Divider color='#dee2e6'></NavDropdown.Divider>
                             <NavDropdown.ItemText><strong>View Content</strong></NavDropdown.ItemText>

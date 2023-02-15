@@ -2,10 +2,11 @@ import React from 'react';
 import axios from 'axios';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 
 import Cookies from 'js-cookie';
 
-export default function SignInForm(props) {
+export default function LoginForm(props) {
 
     const csrftoken = Cookies.get('csrftoken');
 
@@ -17,22 +18,21 @@ export default function SignInForm(props) {
 
     const onSubmit = (data) => {
         console.log('submit login...');
-        console.log(data);
+        // console.log(data);
 
         // request
-        axios.post('/accounts/login/', data
-            , {
-                headers: {
-                    "X-CSRFToken": csrftoken,  // django will convert this into "HTTP_X_CSRFTOKEN", which is the default CSRF_HEADER_NAME.
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                }
-            }
+        // axios.post('/api/accounts/login/', data
+        axios.get('/api/accounts/' //, data
+            // , {
+            //     headers: {
+            //         "X-CSRFToken": csrftoken,  // django will convert this into "HTTP_X_CSRFTOKEN", which is the default CSRF_HEADER_NAME.
+            //         'Accept': 'application/json',
+            //         'Content-Type': 'application/json'
+            //     }
+            // }
         )
-            .then(response => { // success
+            .then(response => { // 200 doesn't necessarily mean I was given authorization. Should it be returning an auth token??
                 console.log(response);
-                console.log('Login.js: Successful Login: ' + response.status);
-                // redirect to home, hide SignIn link.
             })
             .catch(error => { // failure
                 console.log('Login failed!')
@@ -45,17 +45,17 @@ export default function SignInForm(props) {
         <Container className='my-4' >
             <br />
             <Row>
-                <Col></Col>
+                <Col><button onClick={() => console.log(csrftoken)}>csrf token</button></Col>
                 <Col>
                     <h1 className={'text-center'} style={{ color: 'black' }}>Sign In</h1>
-                    <p className={'text-center'} style={{ color: 'black' }}>If you have not created an account, please <a href='#'>sign up</a>!</p>
+                    <p className={'text-center'} style={{ color: 'black' }}>If you have not created an account, please <Link to={'/accounts/signup/'} >sign up</Link>!</p>
                     <Form onSubmit={handleSubmit(onSubmit)}>
-                        
-                        <Form.Group className="mb-3" controlId={'Username'}>
+
+                        <Form.Group className="mb-3" controlId={'username'}>
                             <Form.Control
                                 type='email'
-                                placeholder='Username'
-                                {...register('Username', {
+                                placeholder='username'
+                                {...register('username', {
                                     required: 'You must provide your username.' //,
                                     // pattern: {
                                     //     value: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/,
@@ -64,20 +64,20 @@ export default function SignInForm(props) {
                                 })}
                                 required
                             />
-                            {errors['UserName'] && <p className="errorMsg">{errors['UserName'].message}</p>}
+                            {errors['userName'] && <p className="errorMsg">{errors['userName'].message}</p>}
                         </Form.Group>
 
-                        <Form.Group className="mb-3" controlId={'Password'}>
+                        <Form.Group className="mb-3" controlId={'password'}>
                             <Form.Control
                                 type='password'
                                 placeholder='Password'
-                                {...register('Password', { required: 'You must provide a password.' })}
+                                {...register('password', { required: 'You must provide a password.' })}
                                 required
                             />
-                            {errors['Password'] && <p className="errorMsg">{errors['Password'].message}</p>}
+                            {errors['password'] && <p className="errorMsg">{errors['password'].message}</p>}
                         </Form.Group>
 
-                        <Button className='my-3' type='submit' value='Save' size='lg' >Sign In</Button>
+                        <Button className='my-3' type='submit' value='Save' size='lg' >Login</Button>
                     </Form>
                 </Col>
                 <Col></Col>

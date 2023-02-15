@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from '../Home/Home';
 import Footer from './Footer';
-import SignInForm from '../Forms/SignInForm';
+import LoginForm from '../Forms/LoginForm';
+import SignUpForm from '../Forms/SignUpForm';
 import NavBar from './NavBar';
 
 import StatusPage from '../StatusPage/StatusPage';
@@ -29,9 +30,11 @@ export default function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
+
+        <Route path="/accounts/login/" element={<LoginForm user={user} setUser={setUser} />} />
+        <Route path="/accounts/signup/" element={<SignUpForm user={user} setUser={setUser} />} />
+
         <Route path='/status/' element={<StatusPage />} />
-        <Route path="/login/" element={<SignInForm user={user} setUser={setUser} />} />
-        {/* <Route path="/division/" element={<Departments />} /> */}
 
         <Route path="/project/" element={<Projects />} />
         <Route path="/project/:id/" element={<ProjectView />} />
