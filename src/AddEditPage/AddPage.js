@@ -53,6 +53,7 @@ export default function AddPage() {
     return (
         <>
             <PageHeader title={`Add ${toTitleCase(target)}`} image={headerImage} />
+            <button onClick={() => console.log(api)}>addpage API</button>
             <FormBuilder options={objToArray(options.actions.POST)} />
         </>
     )

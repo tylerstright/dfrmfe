@@ -33,6 +33,7 @@ export function DateInput({ name, label, register, errors, validationSchema, req
                 {...register(name, validationSchema)}
                 // aria-describedby="basic-addon1"
                 readOnly={readOnly}
+                required={required}
             />
             {errors[name] && <p className="errorMsg">{errors[name].message}</p>}
         </Form.Group>
@@ -84,7 +85,7 @@ export function MultiSelectInput({ name, label, api, register, errors, validatio
 
     // hit provided API
     useEffect(() => {
-        axios.get(api) // USE THE PROXY!
+        axios.get(api)
             .then(response => {
                 // console.log(response.data);
                 setOptions(response.data);
@@ -123,7 +124,7 @@ export function SelectInput({ name, label, api, register, errors, validationSche
     const [options, setOptions] = useState(null);
 
     useEffect(() => {
-        axios.get(api) // USE THE PROXY!
+        axios.get(api)
             .then(response => {
                 // console.log(response.data);
                 setOptions(response.data);
@@ -192,6 +193,7 @@ export function TextInput({ name, label, type, placeholder, register, errors, va
                 type={type}
                 placeholder={placeholder}
                 {...register(name, validationSchema)}
+                required={required}
                 readOnly={readOnly}
             />
             {errors[name] && <p className="errorMsg">{errors[name].message}</p>}

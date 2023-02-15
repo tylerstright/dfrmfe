@@ -3,13 +3,8 @@
 // import { useForm } from 'react-hook-form';
 // import axios from 'axios';
 
-// import HiddenId from './Inputs';
-// import TextInput from '../Inputs/TextInput';
-// import TextAreaInput from '../Inputs/TextAreaInput';
-// import MultiSelectInput from '../Inputs/MultiSelectInput';
-// import ImageInput from '../Inputs/ImageInput';
-// import DateInput from '../Inputs/DateInput';
-// // import SelectInput from '../Inputs/SelectInput';
+// import { CheckBoxInput, DateInput, ImageInput, HiddenId, MultiSelectInput, TextAreaInput, SelectInput, TextInput } from './Inputs';
+
 
 // //https://www.freecodecamp.org/news/how-to-create-forms-in-react-using-react-hook-form/
 

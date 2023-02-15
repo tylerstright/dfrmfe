@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from '../Home/Home';
 import Footer from './Footer';
-import SignIn from '../SignIn/SignIn';
+import SignInForm from '../Forms/SignInForm';
 import NavBar from './NavBar';
 
 import StatusPage from '../StatusPage/StatusPage';
@@ -30,7 +30,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path='/status/' element={<StatusPage />} />
-        <Route path="/login/" element={<SignIn user={user} setUser={setUser} />} />
+        <Route path="/login/" element={<SignInForm user={user} setUser={setUser} />} />
         {/* <Route path="/division/" element={<Departments />} /> */}
 
         <Route path="/project/" element={<Projects />} />

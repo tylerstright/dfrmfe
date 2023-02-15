@@ -1,8 +1,10 @@
 import React from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-// import axios from 'axios';
+import axios from 'axios';
+import Cookies from 'js-cookie';
 
+// import CSRFtoken from '../SignIn/CSRFtoken';
 import { CheckBoxInput, DateInput, ImageInput, HiddenId, MultiSelectInput, TextAreaInput, SelectInput, TextInput } from './Inputs';
 
 //https://www.freecodecamp.org/news/how-to-create-forms-in-react-using-react-hook-form/
@@ -18,6 +20,23 @@ export default function FormBuilder({ options }) {
     const onSubmit = (data) => {
         console.log('HookForm Submit:')
         console.log(data);
+
+        const csrftoken = Cookies.get('csrftoken');
+
+        axios.put('/api/division/new/', data, {
+            headers: {
+                "X-CSRFToken": csrftoken,  // django will convert this into "HTTP_X_CSRFTOKEN", which is the default CSRF_HEADER_NAME.
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => {
+                console.log('Form submitted!')
+                console.log(response);
+            })
+            .catch(error => {
+                return error;
+            });
     };
 
     // const fieldArray = [
@@ -59,7 +78,7 @@ export default function FormBuilder({ options }) {
 
                         case 'field':
                             // HOW DO WE KNOW IF IT's MULTIPLE OR NOT???
-                            if ((o.name) == 'IS THIS A MULTIPLE???') {
+                            if ((o.name) === 'IS THIS A MULTIPLE???') {
 
                                 return (
                                     <MultiSelectInput
@@ -181,7 +200,7 @@ export default function FormBuilder({ options }) {
                                         readOnly={o.readOnly}
                                     />);
                             }
-
+                            break;
                         default:
                             return <h1>{`Missed ${o['type']}`}</h1>;
                     }
