@@ -22,14 +22,16 @@ export default function NavBar(props) {
                         <NavLink to='/status/' className={'nav-link'} >Snake Basin Fish Status</NavLink>
                         <NavLink to='/news/' className={'nav-link'} >News</NavLink>
                         <NavLink to='/docs/' className={'nav-link'} >Documents</NavLink>
-                        <NavDropdown title="Links" id="basic-nav-dropdown">
-                            <NavLink to='https://www.cbr.washington.edu/dart' target='_blank' className={'dropdown-item'}>DART</NavLink>
-                            <NavLink to='https://npt-cdms.nezperce.org/login.html#!/login' target='_blank' className={'dropdown-item'}>CDMS</NavLink>
-                            <NavLink to='https://nptfisheries.shinyapps.io/kus-data/' target='_blank' className={'dropdown-item'}>Kus Data</NavLink>
-                            <NavLink to='https://nptfisheries.shinyapps.io/PITtrackR/' target='_blank' className={'dropdown-item'}>PitTrackR</NavLink>
+                        <NavDropdown title="Links" id="nav-dropdown" menuVariant='dark'>
+                            <NavDropdown.Item href='https://www.cbr.washington.edu/dart' target='_blank' >DART</NavDropdown.Item>
+                            <NavDropdown.Item href='https://npt-cdms.nezperce.org/login.html#!/login' target='_blank' >CDMS</NavDropdown.Item>
+                            <NavDropdown.Item href='https://nptfisheries.shinyapps.io/kus-data/' target='_blank' >Kus Data</NavDropdown.Item>
+                            <NavDropdown.Item href='https://nptfisheries.shinyapps.io/PITtrackR/' target='_blank' >PitTrackR</NavDropdown.Item>
                         </NavDropdown>
-                        <NavDropdown title="About Us" id="basic-nav-dropdown">
-                            <NavLink to='/project/' className={'dropdown-item'}>Project Details</NavLink>
+                        <NavDropdown title="About Us" id="nav-dropdown" menuVariant='dark'>
+                            <NavDropdown.Item to='/division/'>Department Structure</NavDropdown.Item>
+                            <NavDropdown.Item to='/project/'>Project Details</NavDropdown.Item>
+                            <NavDropdown.Item to='/facility/'>Facility Locations</NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
                     <Nav>

@@ -15,7 +15,15 @@ export default function SignUpForm(props) {
 
     const onSubmit = (data) => {
         console.log('submit login...');
-        console.log(data);
+
+        // console.log(data.password);
+        // console.log(document.getElementById('password-repeat').value)
+
+        if(data.password !== document.getElementById('password-repeat').value) {
+            return alert('Woops! Your passwords do not match! Please try again.');
+        } else {
+            console.log(data);
+        }        
     }
 
     return (
@@ -28,7 +36,7 @@ export default function SignUpForm(props) {
                     <Form onSubmit={handleSubmit(onSubmit)}>
 
                         <Form.Group className="mb-3" controlId={'email'}>
-                            <Form.Label>E-mail address*</Form.Label>
+                            <Form.Label>E-mail Address*</Form.Label>
                             <Form.Control
                                 type='email'
                                 {...register('email', {
@@ -45,7 +53,7 @@ export default function SignUpForm(props) {
 
                         <TextInput
                             name='first_name'
-                            label='First name'
+                            label='First Name'
                             type='text'
                             placeholder={null}
                             register={register}
@@ -56,7 +64,7 @@ export default function SignUpForm(props) {
 
                         <TextInput
                             name='last_name'
-                            label='Last name'
+                            label='Last Name'
                             type='text'
                             placeholder={null}
                             register={register}
@@ -77,11 +85,12 @@ export default function SignUpForm(props) {
                             {errors['password'] && <p className="errorMsg">{errors['password'].message}</p>}
                         </Form.Group>
 
-                        <Form.Group className="mb-3" controlId={'password-repeat'}>
+                        <Form.Group className="mb-3">
                             <Form.Label>Password (repeat)</Form.Label>
                             <Form.Control
+                                id='password-repeat'
                                 type='password'
-                                {...register('password-repeat', { required: 'You must provide a password.' })}
+                                // {...register('password-repeat', { required: 'You must provide a password.' })}
                                 required
                             />
                             {errors['password-repeat'] && <p className="errorMsg">{errors['password-repeat'].message}</p>}
