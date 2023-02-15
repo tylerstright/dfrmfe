@@ -41,6 +41,8 @@ export default function App() {
         <Route path="/division/list" element={<ListPage />} />
         <Route path="/department/list" element={<ListPage />} />
 
+        <Route path="/employee/new/" element={<AddPage />} />
+        <Route path="/department/new/" element={<AddPage />} />
         <Route path="/division/new/" element={<AddPage />} />
         <Route path="/project/new/" element={<AddPage />} />
 

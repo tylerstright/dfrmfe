@@ -58,13 +58,25 @@ export default function SignIn(props) {
         // axios.get('/api/employee/2/', {
         // axios.options('/api/employee/' //,
         axios.head('/api/employee/' //,
-        // {
+            // {
             //     headers: {
             //         "X-CSRFToken": csrftoken,  // django will convert this into "HTTP_X_CSRFTOKEN", which is the default CSRF_HEADER_NAME.
             //         'Accept': 'application/json',
             //         'Content-Type': 'application/json'
             //     }
             // }
+        )
+            .then(response => { // success
+                console.log(response);
+            })
+            .catch(error => { // failure
+                console.log(error);
+            });
+    }
+
+    function loginOptions() {
+
+        axios.options('/accounts/login/'
         )
             .then(response => { // success
                 console.log(response);
@@ -81,6 +93,7 @@ export default function SignIn(props) {
                 <Col></Col>
                 <Col>
                     <button onClick={tryUsers}>tryAPI w/ token</button>
+                    <button onClick={loginOptions}>LOGIN options API</button>
                     <h1 className={'text-center'} style={{ color: 'black' }}>Sign In</h1>
                     <p className={'text-center'} style={{ color: 'black' }}>If you have not created an account, please <a href='#'>sign up</a>!</p>
                     <form action={'/accounts/login/'} method={'post'} >
