@@ -6,9 +6,9 @@ import FormBuilder from '../Forms/FormBuilder';
 
 import { useLocation } from 'react-router';
 
-
 import headerImage from '../images/background.jpg';
 import toTitleCase from '../functions/toTitleCase';
+import objToArray from '../functions/objToArray';
 
 export default function AddPage() {
     const [target, setTarget] = useState(null); //project, divison, etc.
@@ -53,7 +53,7 @@ export default function AddPage() {
     return (
         <>
             <PageHeader title={`Add ${toTitleCase(target)}`} image={headerImage} />
-            <FormBuilder options={options.actions.POST} />
+            <FormBuilder options={objToArray(options.actions.POST)} />
         </>
     )
 }

@@ -26,6 +26,21 @@ export default function FormBuilder({ options }) {
         console.log(data);
     };
 
+    function loop() {
+        // for (let i = 0; i < Object.keys(options).length; i++) {
+        //     console.log(Object.keys(options)[i]);
+        // }
+        // console.log(Object.keys(options));
+        // let x = Object.keys(options);
+        // console.log(typeof(x));
+
+        let objArray = [];
+        for (let i = 0; i < Object.keys(options).length; i++) {
+            objArray.push(options[Object.keys(options)[i]]);
+            objArray[i]['name'] = Object.keys(options)[i];
+        }
+        console.log(objArray);
+    }
     // const fieldArray = [
     //     {name:}
     // ]
@@ -33,9 +48,13 @@ export default function FormBuilder({ options }) {
     return (
         <Container className='my-3' style={{ backgroundColor: 'hotpink' }}>
             <button onClick={() => console.log(options)}>FormBuilder options</button>
+            <button onClick={loop}>Loop</button>
 
             <Form onSubmit={handleSubmit(onSubmit)}>
-
+                {/* {Object.keys(options).map((o, index) => {
+                    return <h1>{options[o]}</h1>;
+                    }
+                )} */}
                 {/* <HiddenId 
                     id={2}
                     register={register} 
