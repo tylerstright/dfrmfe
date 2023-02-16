@@ -1,4 +1,4 @@
-export function flatten(data, response = {}, flatKey = "", onlyLastKey = false) {
+export default function flatten(data, response = {}, flatKey = "", onlyLastKey = false) {
     for (const [key, value] of Object.entries(data)) {
       let newFlatKey;
       if (!isNaN(parseInt(key)) && flatKey.includes("[]")) {

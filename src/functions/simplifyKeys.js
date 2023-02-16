@@ -1,5 +1,5 @@
 // provide the function an object that has a bunch of keys.  then loop over the keys
-export function simplifyKeys(obj) {
+export default function simplifyKeys(obj) {
     let simplifiedObj = {};
 
     for (let key of Object.keys(obj)) {

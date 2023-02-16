@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router';
-
 import { Link } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
-import axios from 'axios';
+
 import PageHeader from '../Page/PageHeader';
 import ListTable from '../Tables/ListTable';
 
-import { selectKeys } from '../functions/selectKeys';
-import { flatten } from '../functions/flatten';
-import { simplifyKeys } from '../functions/simplifyKeys';
+import selectKeys from '../functions/selectKeys';
+import flatten from '../functions/flatten';
+import simplifyKeys from '../functions/simplifyKeys';
+import toTitleCase from '../functions/toTitleCase';
 
 import headerImage from '../images/background.jpg';
-import toTitleCase from '../functions/toTitleCase';
 
 export default function ListPage({ target, keys }) {
     const [list, setList] = useState(null);

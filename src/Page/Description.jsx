@@ -1,20 +1,20 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import cardImage from '../images/parr.jpg';
+
+//https://react-bootstrap.github.io/layout/grid/
 
 export default function Description(props) {
 
     // currently set up for Projects
 
     return (
-        <section className="py-5 container">
-            <div className="row py-lg-5">
-                <div className="col-lg-8 mx-auto">
-                    <p className='lead text-muted'>
-                    <div dangerouslySetInnerHTML={{ __html: props.description}} />
-                    </p>
-                </div>
-            </div>
-        </section>
+        <Container className='p-5'>
+            <Row>
+                <Col xs={10} className='mx-auto'>
+                    <div className='lead text-muted' dangerouslySetInnerHTML={{ __html: props.description }} />
+                </Col>
+            </Row>
+        </Container>
     )
 }
