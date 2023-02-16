@@ -1,15 +1,13 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 
-// import axios from 'axios';
 import PageHeader from '../Page/PageHeader';
 import Description from '../Page/Description';
-import EmployeeCard from '../Page/EmployeeCard';
+import EmployeeCard from '../Cards/EmployeeCard';
 
 import headerImage from '../images/background.jpg';
-import Projects from './Projects';
 
-export default function ProjectView() {
+export default function ProjectDetail() {
     // const [project, setProject] = useState(null);
     
     const project = useLoaderData();

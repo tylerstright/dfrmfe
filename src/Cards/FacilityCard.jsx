@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Col } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
-export default function PageCard({ link, data }) {
+export default function FacilityCard({ link, data }) {
 
     const navigate = useNavigate();
     function redirect() {
@@ -12,16 +12,17 @@ export default function PageCard({ link, data }) {
 
     return (
         <Col>
-            <Card 
+            <Card
                 className='bg-dark border-primary text-white text-center h-100'
-                onClick={redirect} 
+                onClick={redirect}
                 style={{ cursor: 'pointer' }}>
                 <Card.Body>
+                    <Card.Img variant="top" src={data.facility_image} />
                     <Card.Header as='h4' style={{ color: '#ABE7FC' }} >{data.name}</Card.Header>
-                    <Card.Text className={'text-muted'}>Project Leader: {data.project_leader} </Card.Text>
-                    <Card.Img variant="top" src={data.project_image1} />
-                    <div dangerouslySetInnerHTML={{ __html: data.description.slice(0, 500) }} />
-                    {/* <Card.Footer className={'text-muted'} >{data.project_leader}</Card.Footer> */}
+                    <Card.Text>{data.phone_number}</Card.Text>
+                    <Card.Text>{data.street_address}</Card.Text>
+                    <Card.Text>{data.mailing_address}</Card.Text>
+                    <Card.Text className={'text-muted'}>Manager: {data.manager}</Card.Text>
                 </Card.Body>
             </Card>
         </Col>

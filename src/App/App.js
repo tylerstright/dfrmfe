@@ -14,10 +14,13 @@ import EditPage from '../AddEditPage/EditPage';
 import AddPage from '../AddEditPage/AddPage';
 
 
-import Projects from '../Projects/Projects';
-import ProjectView from '../Projects/ProjectView';
+import Projects from '../About/Projects';
+import Facilities from '../About/Facilities';
+// import Divisions from '../About/Divisions';
 
-import Facilities from '../Facilities/Facilities';
+import ProjectDetail from '../Detail/ProjectDetail';
+import FacilityDetail from '../Detail/FacilityDetail';
+
 import UserProfile from '../User/UserProfile';
 
 
@@ -31,7 +34,6 @@ export default function App() {
         <Route path="/accounts/login/" element={<LoginForm user={user} setUser={setUser} />} />
         <Route path="/accounts/signup/" element={<SignUpForm user={user} setUser={setUser} />} />
 
-
         <Route
           path="/project/"
           element={<Projects />}
@@ -40,24 +42,23 @@ export default function App() {
         />
         <Route
           path="/project/:id/"
-          element={<ProjectView />}
-          // action
-
-          loader={async ({ params }) => {
-            console.log('ProjectView Route.loader fired!');
-            return fetch(`/api/project/${params.id}/`);
-            // axios.get(/api/project/)
-            //   .then(response => {
-            //     console.log('/api/project/:id/ response:');
-            //     console.log(response);
-            //     setProject(response.data);
-            //   })
-            //   .catch(error => {
-            //     console.log(error);
-            //   });
-          }}
+          element={<ProjectDetail />}
+          loader={async ({ params }) => { return fetch(`/api/project/${params.id}/`); }}
           errorElement={<ErrorPage />}
         />
+        <Route
+          path="/facility/"
+          element={<Facilities />}
+          loader={async () => { return fetch('/api/facility/'); }}
+          errorElement={<ErrorPage />}
+        />
+        <Route
+          path="/facility/:id/"
+          element={<FacilityDetail />}
+          loader={async ({ params }) => { return fetch(`/api/facility/${params.id}/`); }}
+          errorElement={<ErrorPage />}
+        />
+
 
 
 
