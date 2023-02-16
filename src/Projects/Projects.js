@@ -6,7 +6,7 @@ import PageHeader from '../Page/PageHeader';
 import PageCard from '../Page/PageCard';
 import headerImage from '../images/background.jpg';
 
-export default function Documents() {
+export default function Projects() {
     const [projects, setProjects] = useState(null);
 
     // query departments on first page visit.

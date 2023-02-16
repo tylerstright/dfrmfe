@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+// import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
+import axios from 'axios';
 
 
 import Layout from './Layout';
 import Home from '../Home/Home';
-import Footer from './Footer';
+// import Footer from './Footer';
 import LoginForm from '../Forms/LoginForm';
 import SignUpForm from '../Forms/SignUpForm';
-import NavBar from './NavBar';
-
-import axios from 'axios';
-
-import { createBrowserRouter, createRoutesFromElements, RouterProvider } from 'react-router-dom';
+// import NavBar from './NavBar';
 
 import ListPage from '../ListPage/ListPage';
 import EditPage from '../AddEditPage/EditPage';

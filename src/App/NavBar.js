@@ -29,9 +29,15 @@ export default function NavBar(props) {
                             <NavDropdown.Item href='https://nptfisheries.shinyapps.io/PITtrackR/' target='_blank' >PitTrackR</NavDropdown.Item>
                         </NavDropdown>
                         <NavDropdown title="About Us" id="nav-dropdown" menuVariant='dark'>
-                            <NavDropdown.Item to='/division/'>Department Structure</NavDropdown.Item>
-                            <NavDropdown.Item to='/project/'>Project Details</NavDropdown.Item>
-                            <NavDropdown.Item to='/facility/'>Facility Locations</NavDropdown.Item>
+                            <NavDropdown.Item>
+                                <NavLink to='/division/' className={'nav-link py-0'} >Department Structure</NavLink>
+                            </NavDropdown.Item>
+                            <NavDropdown.Item>
+                                <NavLink to='/project/' className={'nav-link py-0'} >Project Details</NavLink>
+                            </NavDropdown.Item>
+                            <NavDropdown.Item>
+                                <NavLink to='/facility/' className={'nav-link py-0'} >Facility Locations</NavLink>
+                            </NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
                     <Nav>
