@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App/App';
 
-// BOOTSTRAP CSS https://react-bootstrap.github.io/getting-started/introduction
+import App from './App/App';
+import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+// BOOTSTRAP CSS https://react-bootstrap.github.io/getting-started/introduction
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
