@@ -29,6 +29,7 @@ export default function NavBar(props) {
                             <NavDropdown.Item href='https://nptfisheries.shinyapps.io/PITtrackR/' target='_blank' >PitTrackR</NavDropdown.Item>
                         </NavDropdown>
                         <NavDropdown title="About Us" id="nav-dropdown" menuVariant='dark'>
+                            {/* These could be sized down similar to the UserName dropdown, but the highlight function doesn't carry. */}
                             <NavDropdown.Item>
                                 <NavLink to='/division/' className={'nav-link py-0'} >Department Structure</NavLink>
                             </NavDropdown.Item>

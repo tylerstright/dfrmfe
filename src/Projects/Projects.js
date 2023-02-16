@@ -9,22 +9,22 @@ import headerImage from '../images/background.jpg';
 export default function Projects() {
     const [projects, setProjects] = useState(null);
 
-    // query departments on first page visit.
-    useEffect(() => {
-        axios.get('/api/project/') // USE THE PROXY!
-            .then(response => {
-                console.log('/api/project/ response:');
-                console.log(response);
-                setProjects(response.data);
-            })
-            .catch(error => {
-                console.log(error);
-            });
-    }, [])
+    // // query departments on first page visit.
+    // useEffect(() => {
+    //     axios.get('/api/project/') // USE THE PROXY!
+    //         .then(response => {
+    //             console.log('/api/project/ response:');
+    //             console.log(response);
+    //             setProjects(response.data);
+    //         })
+    //         .catch(error => {
+    //             console.log(error);
+    //         });
+    // }, [])
 
-    if (!projects) {
-        return <></>;
-    }
+    // if (!projects) {
+    //     return <></>;
+    // }
 
     return (
         <>

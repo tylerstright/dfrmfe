@@ -6,10 +6,9 @@ import axios from 'axios';
 
 import Layout from './Layout';
 import Home from '../Home/Home';
-// import Footer from './Footer';
 import LoginForm from '../Forms/LoginForm';
 import SignUpForm from '../Forms/SignUpForm';
-// import NavBar from './NavBar';
+import ErrorPage from './ErrorPage';
 
 import ListPage from '../ListPage/ListPage';
 import EditPage from '../AddEditPage/EditPage';
@@ -21,6 +20,7 @@ import ProjectView from '../Projects/ProjectView';
 
 import Facilities from '../Facilities/Facilities';
 import UserProfile from '../User/UserProfile';
+import { Action } from '@remix-run/router';
 
 
 export default function App() {
@@ -32,10 +32,15 @@ export default function App() {
         <Route index element={<Home />} />
         <Route path="/accounts/login/" element={<LoginForm user={user} setUser={setUser} />} />
         <Route path="/accounts/signup/" element={<SignUpForm user={user} setUser={setUser} />} />
-  
-        <Route path="/project/" element={<Projects />} />
-  
-        {/* https://reactrouter.com/en/main/route/route */}
+
+        <Route
+          path="/project/"
+          element={<Projects />}
+          // loader=
+          // Action=
+          errorElement={<ErrorPage />}
+          />
+
         <Route
           element={<ProjectView />}
           path="/project/:id/"
@@ -55,23 +60,23 @@ export default function App() {
         // action
         // errorElement
         />
-  
+
         <Route path="/employee/list" element={<ListPage />} />
         <Route path="/project/list/" element={<ListPage />} />
         <Route path="/division/list" element={<ListPage />} />
         <Route path="/department/list" element={<ListPage />} />
-  
+
         {/* <Route path={['/employee/list/', '/project/list/','/division/list/','/department/list/']} element={<ListPage />} /> */}
-  
+
         <Route path="/employee/new/" element={<AddPage />} />
         <Route path="/department/new/" element={<AddPage />} />
         <Route path="/division/new/" element={<AddPage />} />
         <Route path="/project/new/" element={<AddPage />} />
-  
+
         <Route path="/project/:id/edit/" element={<EditPage />} />
-  
-  
-  
+
+
+
         <Route path="/facility" element={<Facilities />} />
         <Route path="/profile/" element={<UserProfile />} />
       </Route>
@@ -80,7 +85,7 @@ export default function App() {
 
 
   // the common elements throughout the website are the NavBar and the background image.
-  return ( <RouterProvider router={router} />
+  return (<RouterProvider router={router} />
     // <BrowserRouter>
     //   <NavBar />
     //   <Routes>
