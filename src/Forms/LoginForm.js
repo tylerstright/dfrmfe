@@ -52,6 +52,7 @@ export default function LoginForm(props) {
                     <Form onSubmit={handleSubmit(onSubmit)}>
 
                         <Form.Group className="mb-3" controlId={'username'}>
+                            <Form.Label>E-mail Address</Form.Label>
                             <Form.Control
                                 type='email'
                                 placeholder='username'
@@ -68,6 +69,7 @@ export default function LoginForm(props) {
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId={'password'}>
+                            <Form.Label>Password</Form.Label>
                             <Form.Control
                                 type='password'
                                 placeholder='Password'

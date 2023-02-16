@@ -6,7 +6,8 @@ import LoginForm from '../Forms/LoginForm';
 import SignUpForm from '../Forms/SignUpForm';
 import NavBar from './NavBar';
 
-import StatusPage from '../StatusPage/StatusPage';
+import axios from 'axios';
+
 import ListPage from '../ListPage/ListPage';
 import EditPage from '../AddEditPage/EditPage';
 import AddPage from '../AddEditPage/AddPage';
@@ -15,10 +16,7 @@ import AddPage from '../AddEditPage/AddPage';
 import Projects from '../Projects/Projects';
 import ProjectView from '../Projects/ProjectView';
 
-import Departments from '../Departments/Departments';
 import Facilities from '../Facilities/Facilities';
-import News from '../News/News';
-import Documents from '../Documents/Documents';
 import UserProfile from '../User/UserProfile';
 
 export default function App() {
@@ -34,15 +32,35 @@ export default function App() {
         <Route path="/accounts/login/" element={<LoginForm user={user} setUser={setUser} />} />
         <Route path="/accounts/signup/" element={<SignUpForm user={user} setUser={setUser} />} />
 
-        <Route path='/status/' element={<StatusPage />} />
-
         <Route path="/project/" element={<Projects />} />
-        <Route path="/project/:id/" element={<ProjectView />} />
-        
+
+        {/* https://reactrouter.com/en/main/route/route */}
+        <Route
+          element={<ProjectView />}
+          path="/project/:id/"
+          loader={async ({ params }) => {
+            console.log('ProjectView Route.loader fired!');
+            return fetch(`/api/project/${params.id}.json`);
+            // axios.get(api) // USE THE PROXY!
+            //   .then(response => {
+            //     console.log('/api/project/:id/ response:');
+            //     console.log(response);
+            //     setProject(response.data);
+            //   })
+            //   .catch(error => {
+            //     console.log(error);
+            //   });
+          }}
+        // action
+        // errorElement
+        />
+
         <Route path="/employee/list" element={<ListPage />} />
         <Route path="/project/list/" element={<ListPage />} />
         <Route path="/division/list" element={<ListPage />} />
         <Route path="/department/list" element={<ListPage />} />
+
+        {/* <Route path={['/employee/list/', '/project/list/','/division/list/','/department/list/']} element={<ListPage />} /> */}
 
         <Route path="/employee/new/" element={<AddPage />} />
         <Route path="/department/new/" element={<AddPage />} />
@@ -50,12 +68,10 @@ export default function App() {
         <Route path="/project/new/" element={<AddPage />} />
 
         <Route path="/project/:id/edit/" element={<EditPage />} />
-        
+
 
 
         <Route path="/facility" element={<Facilities />} />
-        <Route path="/news" element={<News />} />
-        <Route path="/docs/" element={<Documents />} />
         <Route path="/profile/" element={<UserProfile />} />
       </Routes>
       <Footer />
