@@ -18,8 +18,8 @@ export default function Projects() {
                 <Row className='g-3 row-cols-md-3'>
                     {projects.map(project => {
                         return (
-                            <ProjectCard link={`/project/${project.id}/`} data={project} />
-                        )
+                            <ProjectCard project={project} />
+                        );
                     })}
                 </Row>
             </Container>

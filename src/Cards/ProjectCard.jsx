@@ -2,13 +2,12 @@ import React from 'react';
 import { Card, Col } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
-export default function ProjectCard({ link, data }) {
+export default function ProjectCard({ link, project }) {
 
     const navigate = useNavigate();
     function redirect() {
         navigate(link);
     };
-
 
     return (
         <Col>
@@ -17,11 +16,20 @@ export default function ProjectCard({ link, data }) {
                 onClick={redirect} 
                 style={{ cursor: 'pointer' }}>
                 <Card.Body>
-                    <Card.Header as='h4' style={{ color: '#ABE7FC' }} >{data.name}</Card.Header>
-                    <Card.Text className={'text-muted'}>Project Leader: {data.project_leader} </Card.Text>
-                    <Card.Img variant="top" src={data.project_image1} />
-                    <div dangerouslySetInnerHTML={{ __html: data.description.slice(0, 500) }} />
-                    {/* <Card.Footer className={'text-muted'} >{data.project_leader}</Card.Footer> */}
+                    <Card.Header as='h4' style={{ color: '#ABE7FC' }} >{project.name}</Card.Header>
+                    <Card.Text className={'text-muted'}>
+                        {'Project Leader: '}
+                        {project.project_leader.map((pl, index) => {
+                                if(index === 0) {
+                                    return `${pl.name.user.first_name} ${pl.name.user.last_name}`;
+                                } else{
+                                    return `, ${pl.name.user.first_name} ${pl.name.user.last_name}`;
+                                }
+                                
+                        })} 
+                        </Card.Text>
+                    <Card.Img className='rounded' variant="top" src={project.project_image1} />
+                    <div className='my-3' dangerouslySetInnerHTML={{ __html: project.description.slice(0, 500) }} />
                 </Card.Body>
             </Card>
         </Col>

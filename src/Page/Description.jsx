@@ -1,6 +1,5 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import cardImage from '../images/parr.jpg';
 
 //https://react-bootstrap.github.io/layout/grid/
 
