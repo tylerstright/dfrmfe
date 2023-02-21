@@ -1,21 +1,27 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
-// import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet/';
+import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 
 export default function IncludeMap() {
-//     // const [points, setPoints] = useState(null);
+    //     // const [points, setPoints] = useState(null);
 
     const geom = useLoaderData();
     console.log(geom);
+    {/* <button onClick={() => console.log(geom)} >geom</button> */ }
 
-
-//     // const position = [51.505, -0.09]
 
     return (
-        <>
-            <button onClick={() => console.log(geom)} >geom</button>
-        </>
-
+        <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false} style={{ height: '400px' }} >
+            <TileLayer
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            <Marker position={[51.505, -0.09]}>
+                <Popup>
+                    A pretty CSS3 popup. <br /> Easily customizable.
+                </Popup>
+            </Marker>
+        </MapContainer>
     )
 
 }
