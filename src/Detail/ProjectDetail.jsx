@@ -1,9 +1,8 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Outlet, useLoaderData } from 'react-router-dom';
+import { Col, Row } from 'react-bootstrap';
 
 import PageHeader from '../Page/PageHeader';
-import SubHeader from '../Page/SubHeader';
 import Description from '../Page/Description';
 import EmployeeCard from '../Cards/EmployeeCard';
 
@@ -31,7 +30,7 @@ export default function ProjectDetail() {
                 </Col>
             </Row>
 
-            <SubHeader title={'Project Components'} />
+            <Outlet />
         </>
     )
 }

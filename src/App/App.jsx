@@ -19,11 +19,12 @@ import Facilities from '../About/Facilities';
 import Divisions from '../About/Divisions';
 
 import ProjectDetail from '../Detail/ProjectDetail';
+import SubProjectDetail from '../Detail/SubProjectDetail';
+import TaskDetail from '../Detail/TaskDetail';
 import FacilityDetail from '../Detail/FacilityDetail';
 import DivisionDetail from '../Detail/DivisionDetail';
 
 import UserProfile from '../User/UserProfile';
-
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -46,7 +47,32 @@ export default function App() {
           element={<ProjectDetail />}
           loader={async ({ params }) => { return fetch(`/api/project/${params.id}/`); }}
           errorElement={<ErrorPage />}
-        />
+        >
+          <Route
+            path="/project/:id/"
+            element={<SubProjectDetail />}
+            loader={async ({ params }) => {
+              return fetch(`/api/subproject/`)
+                .then(response => response.json())
+                .then(data => data.filter(sub => sub.project.id == params.id)) // data type don't need to match\ (string vs. number "2"==2)
+            }
+            }
+            errorElement={<ErrorPage />}
+          > <Route
+              path="/project/:id/"
+              element={<TaskDetail />}
+              loader={async ({ params }) => {
+                return fetch(`/api/task/`)
+                  .then(response => response.json())
+                  .then(data => data.filter(task => task.subproject.project.id == params.id)) // data type don't need to match\ (string vs. number "2"==2)
+              }
+              }
+              errorElement={<ErrorPage />}
+            />
+          </Route>
+        </Route>
+
+
 
         <Route
           path="/facility/"
@@ -81,7 +107,7 @@ export default function App() {
           element={<ListPage
             target='employee'
             keys={['first name', 'title', 'work phone', 'mobile phone', 'active', 'view', 'edit']} />}
-          loader={async ({ params }) => { return fetch(`/api/employee/`); }}
+          loader={async () => { return fetch(`/api/employee/`); }}
           errorElement={<ErrorPage />}
         />
         <Route
@@ -91,7 +117,7 @@ export default function App() {
               target='project'
               keys={['name', 'created', 'active', 'view', 'edit']} />
           }
-          loader={async ({ params }) => { return fetch(`/api/project/`); }}
+          loader={async () => { return fetch(`/api/project/`); }}
           errorElement={<ErrorPage />}
         />
         <Route
@@ -99,7 +125,7 @@ export default function App() {
           element={<ListPage
             target='division'
             keys={['name', 'director', 'deputy director', 'administrative assistant', 'facility', 'view', 'edit']} />}
-          loader={async ({ params }) => { return fetch(`/api/division/`); }}
+          loader={async () => { return fetch(`/api/division/`); }}
           errorElement={<ErrorPage />}
         />
         <Route
@@ -107,7 +133,7 @@ export default function App() {
           element={<ListPage
             target='department'
             keys={['name', 'manager', 'deputy manager', 'administrative assistant', 'facility', 'view', 'edit']} />}
-          loader={async ({ params }) => { return fetch(`/api/department/`); }}
+          loader={async () => { return fetch(`/api/department/`); }}
           errorElement={<ErrorPage />} />
 
 
