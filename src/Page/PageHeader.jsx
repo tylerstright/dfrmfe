@@ -1,4 +1,5 @@
 import React from 'react';
+import { Container } from 'react-bootstrap';
 
 export default function PageHeader(props) {
 
@@ -26,9 +27,9 @@ export default function PageHeader(props) {
                 <img src={props.image} style={imgCSS} alt=''></img>
             </div>
             <div className="bg-dark">
-                <div className="container py-5">
+                <Container className="py-5">
                     <h1 className="text-center text-light">{props.title}</h1>
-                </div>
+                </Container>
             </div>
         </>
     )

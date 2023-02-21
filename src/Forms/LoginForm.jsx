@@ -41,11 +41,33 @@ export default function LoginForm(props) {
             });
     }
 
+    function tryAPI() {
+        axios.get('/api-auth/' //, data
+        // , {
+        //     headers: {
+        //         "X-CSRFToken": csrftoken,  // django will convert this into "HTTP_X_CSRFTOKEN", which is the default CSRF_HEADER_NAME.
+        //         'Accept': 'application/json',
+        //         'Content-Type': 'application/json'
+        //     }
+        // }
+    )
+        .then(response => { // 200 doesn't necessarily mean I was given authorization. Should it be returning an auth token??
+            console.log(response);
+        })
+        .catch(error => { // failure
+            console.log('Login failed!')
+            console.log(error);
+            // alert('Username and Password combination not accepted, please try again.');
+        });
+    }
+
     return (
         <Container className='my-4' >
             <br />
             <Row>
-                <Col><button onClick={() => console.log(csrftoken)}>csrf token</button></Col>
+                <Col><button onClick={() => console.log(csrftoken)}>csrf token</button>
+                    <button onClick={tryAPI}>API AUTH</button>
+                </Col>
                 <Col>
                     <h1 className={'text-center'} style={{ color: 'black' }}>Sign In</h1>
                     <p className={'text-center'} style={{ color: 'black' }}>If you have not created an account, please <Link to={'/accounts/signup/'} >sign up</Link>!</p>

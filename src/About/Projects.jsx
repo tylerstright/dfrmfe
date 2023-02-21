@@ -18,7 +18,7 @@ export default function Projects() {
                 <Row className='g-3 row-cols-md-3'>
                     {projects.map(project => {
                         return (
-                            <ProjectCard project={project} />
+                            <ProjectCard key={project.id} project={project} />
                         );
                     })}
                 </Row>

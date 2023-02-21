@@ -2,11 +2,11 @@ import React from 'react';
 import { Card, Col } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
-export default function ProjectCard({ link, project }) {
+export default function ProjectCard({ project }) {
 
     const navigate = useNavigate();
     function redirect() {
-        navigate(link);
+        navigate(`/project/${project.id}/`);
     };
 
     return (

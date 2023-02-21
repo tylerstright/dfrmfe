@@ -16,10 +16,11 @@ import AddPage from '../AddEditPage/AddPage';
 
 import Projects from '../About/Projects';
 import Facilities from '../About/Facilities';
-// import Divisions from '../About/Divisions';
+import Divisions from '../About/Divisions';
 
 import ProjectDetail from '../Detail/ProjectDetail';
 import FacilityDetail from '../Detail/FacilityDetail';
+import DivisionDetail from '../Detail/DivisionDetail';
 
 import UserProfile from '../User/UserProfile';
 
@@ -46,6 +47,7 @@ export default function App() {
           loader={async ({ params }) => { return fetch(`/api/project/${params.id}/`); }}
           errorElement={<ErrorPage />}
         />
+
         <Route
           path="/facility/"
           element={<Facilities />}
@@ -58,6 +60,21 @@ export default function App() {
           loader={async ({ params }) => { return fetch(`/api/facility/${params.id}/`); }}
           errorElement={<ErrorPage />}
         />
+
+        <Route
+          path="/division/"
+          element={<Divisions />}
+          loader={async () => { return fetch('/api/division/'); }}
+          errorElement={<ErrorPage />}
+        />
+        <Route
+          path="/division/:id/"
+          element={<DivisionDetail />}
+          loader={async ({ params }) => { return fetch(`/api/division/${params.id}/`); }}
+          errorElement={<ErrorPage />}
+        />
+
+
 
         <Route
           path="/employee/list/"
@@ -93,7 +110,6 @@ export default function App() {
           loader={async ({ params }) => { return fetch(`/api/department/`); }}
           errorElement={<ErrorPage />} />
 
-        {/* <Route path={['/employee/list/', '/project/list/','/division/list/','/department/list/']} element={<ListPage />} /> */}
 
         <Route path="/employee/new/" element={<AddPage />} />
         <Route path="/department/new/" element={<AddPage />} />

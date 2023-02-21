@@ -7,15 +7,15 @@ import EmployeeCard from '../Cards/EmployeeCard';
 
 import headerImage from '../images/background.jpg';
 
-export default function FacilityDetail() {
+export default function DivisionDetail() {
     
-    const facility = useLoaderData();
-    console.log(facility);
+    const division = useLoaderData();
+    console.log(division);
 
     return (
         <>
-            <PageHeader title={facility.name} image={headerImage} />
-            <Description description={facility.description} />
+            <PageHeader title={division.name} image={headerImage} />
+            <Description description={division.description} />
             <EmployeeCard />
         </>
     )

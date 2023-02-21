@@ -18,7 +18,7 @@ export default function Facilities() {
                 <Row className='g-3 row-cols-md-3'>
                     {facilities.map(facility => {
                         return (
-                            <FacilityCard link={`/facility/${facility.id}/`} data={facility} />
+                            <FacilityCard key={facility.id} facility={facility} />
                         )
                     })}
                 </Row>
