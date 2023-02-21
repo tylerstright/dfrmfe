@@ -2,8 +2,6 @@ import React from 'react';
 import { Card, Col } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
-import cardImage from '../images/parr.jpg';
-
 export default function EmployeeCard({ employee }) {
 
     const navigate = useNavigate();

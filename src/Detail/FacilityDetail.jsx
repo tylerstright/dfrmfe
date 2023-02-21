@@ -2,8 +2,8 @@ import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 
 import PageHeader from '../Page/PageHeader';
-import Description from '../Page/Description';
 import EmployeeCard from '../Cards/EmployeeCard';
+import FacilityContact from '../Page/FacilityContact';
 
 import headerImage from '../images/background.jpg';
 
@@ -14,9 +14,9 @@ export default function FacilityDetail() {
 
     return (
         <>
-            <PageHeader title={facility.name} image={headerImage} />
-            <Description description={facility.description} />
-            <EmployeeCard />
+            <PageHeader title={facility.name.name} image={headerImage} />
+            <FacilityContact facility={facility} />
+            <EmployeeCard employee={facility.manager}/> 
         </>
     )
 }
