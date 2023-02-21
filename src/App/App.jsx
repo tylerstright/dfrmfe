@@ -13,6 +13,7 @@ import ListPage from '../ListPage/ListPage';
 import EditPage from '../AddEditPage/EditPage';
 import AddPage from '../AddEditPage/AddPage';
 
+import IncludeMap from '../Page/IncludeMap';
 
 import Projects from '../About/Projects';
 import Facilities from '../About/Facilities';
@@ -79,7 +80,14 @@ export default function App() {
           element={<Facilities />}
           loader={async () => { return fetch('/api/facility/'); }}
           errorElement={<ErrorPage />}
-        />
+        >
+          <Route
+            path="/facility/"
+            element={<IncludeMap />}
+            loader={async () => { return fetch('/api/facility/points/'); }}
+            err
+          />
+        </Route>
         <Route
           path="/facility/:id/"
           element={<FacilityDetail />}
