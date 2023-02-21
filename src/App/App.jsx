@@ -84,7 +84,11 @@ export default function App() {
           <Route
             path="/facility/"
             element={<IncludeMap />}
-            loader={async () => { return fetch('/api/facility/points/'); }}
+            loader={async () => {
+              return fetch('/api/facility/points/')
+                .then(response => response.json())
+                .then(data => data.features);
+            }}
             errorElement={<ErrorPage />}
           />
         </Route>
