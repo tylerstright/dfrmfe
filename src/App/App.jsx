@@ -4,14 +4,18 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 
 
 import Layout from './Layout';
-import Home from '../Home/Home';
+import Home from '../Page/Home';
 import LoginForm from '../Forms/LoginForm';
 import SignUpForm from '../Forms/SignUpForm';
 import ErrorPage from './ErrorPage';
 
-import ListPage from '../ListPage/ListPage';
-import EditPage from '../AddEditPage/EditPage';
-import AddPage from '../AddEditPage/AddPage';
+import Documents from '../Page/Documents';
+import News from '../Page/News';
+import Status from '../Page/Status';
+
+import ListPage from '../Page/ListPage';
+import EditPage from '../Page/EditPage';
+import AddPage from '../Page/AddPage';
 
 import IncludeMap from '../Page/IncludeMap';
 
@@ -36,6 +40,25 @@ export default function App() {
         <Route index element={<Home />} />
         <Route path="/accounts/login/" element={<LoginForm user={user} setUser={setUser} />} />
         <Route path="/accounts/signup/" element={<SignUpForm user={user} setUser={setUser} />} />
+
+        <Route
+          path='/status/'
+          element={<Status />}
+          // loader={async () => { return fetch('/api/document/'); }}
+          errorElement={<ErrorPage />}
+        />
+        <Route
+          path='/news/'
+          element={<News />}
+          // loader={async () => { return fetch('/api/document/'); }}
+          errorElement={<ErrorPage />}
+        />
+        <Route
+          path='/docs/'
+          element={<Documents />}
+          // loader={async () => { return fetch('/api/document/'); }}
+          errorElement={<ErrorPage />}
+        />
 
         <Route
           path="/project/"

@@ -3,7 +3,7 @@ import { useLoaderData } from 'react-router';
 import { Link } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 
-import PageHeader from '../Page/PageHeader';
+import PageHeader from './PageHeader';
 import ListTable from '../Tables/ListTable';
 
 import selectKeys from '../functions/selectKeys';
