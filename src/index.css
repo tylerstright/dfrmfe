@@ -16,6 +16,11 @@ h1.title {
 }
 
 
+/* if a page doesn't have scroll, it ends up changing the aspect compared to one that does. This adds the bar no matter what. */
+html {
+    overflow-y: scroll;
+}
+
 #bigCheckBox {
     height: 30px;
     width: 30px;

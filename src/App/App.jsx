@@ -44,7 +44,7 @@ export default function App() {
         <Route
           path='/status/'
           element={<Status />}
-          // loader={async () => { return fetch('/api/document/'); }}
+          loader={async () => { return fetch('https://www.cbr.washington.edu/dart/cs/php/rpt/adult_annual.php?sc=1&outputFormat=csv&proj=LWG&startdate=1%2F1&enddate=12%2F31&run='); }}
           errorElement={<ErrorPage />}
         />
         <Route
