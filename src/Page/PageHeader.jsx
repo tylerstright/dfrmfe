@@ -1,6 +1,8 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
 
+import HomeHeader from '../images/background.jpg';
+
 export default function PageHeader(props) {
 
     // sets desired size of container
@@ -24,7 +26,7 @@ export default function PageHeader(props) {
     return (
         <>
             <div style={imgContainerCSS}>
-                <img src={props.image} style={imgCSS} alt=''></img>
+                <img src={HomeHeader} style={imgCSS} alt=''></img>
             </div>
             <div className="bg-dark">
                 <Container className="py-5">

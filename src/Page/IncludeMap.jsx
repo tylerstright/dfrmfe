@@ -1,19 +1,19 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
-import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
-
-import L from 'leaflet';
-import icon from 'leaflet/dist/images/marker-icon.png';
-import iconShadow from 'leaflet/dist/images/marker-shadow.png';
+import { Circle, FeatureGroup, MapContainer, Marker, Popup, Polygon, TileLayer, Tooltip } from 'react-leaflet';
+import { renderToStaticMarkup } from 'react-dom/server';
+import { divIcon } from 'leaflet';
 
 export default function IncludeMap() {
 
     const geom = useLoaderData();
     console.log(geom);
 
-    let DefaultIcon = L.icon({
-        iconUrl: icon,
-        shadowUrl: iconShadow
+
+
+    const iconMarkup = renderToStaticMarkup(<i className=" fa fa-map-marker-alt fa-3x" />);
+    const customMarkerIcon = divIcon({
+        html: iconMarkup,
     });
 
     return (
@@ -26,13 +26,24 @@ export default function IncludeMap() {
                 {geom.map(feature => {
                     // could check geom type and put lines and polys
                     return (
-                        <Marker position={[feature.geometry.coordinates[1], feature.geometry.coordinates[0]]}>
-                            <Popup>
+                        <Marker
+                            position={[feature.geometry.coordinates[1], feature.geometry.coordinates[0]]}
+                            icon={customMarkerIcon}
+                            style={{ background: 'transparent', border: 'none' }}>
+                            {/* <Popup>
                                 {feature.properties.name.name}
-                            </Popup>
+                            </Popup> */}
+                            <Tooltip >{feature.properties.name.name}</Tooltip>
+
                         </Marker>
+                        // <FeatureGroup pathOptions={{color:'blue'}}>
+                        //     <Popup>Circle</Popup>
+                        //     <Circle center={[46.8, -116.8]} radius={2500} />
+                        // </FeatureGroup>
                     )
                 })}
+                <Polygon pathOptions={{ color: 'lime' }} positions={[[47, -117], [47, -116], [46, -116], [46, -117]]} />
+
             </MapContainer>
         </>
     )

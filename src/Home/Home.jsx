@@ -1,11 +1,39 @@
 import React from 'react';
-import Container from 'react-bootstrap/Container';
+import { Col, Container, Row } from 'react-bootstrap';
+
+import HomeHeader from '../images/background.jpg'
+import DFRM from '../images/DFRM.png';
+import NPT from '../images/NPT.png';
 
 export default function Home() {
     return (
-        <Container style={{backgroundColor: 'blue'}}>
-            <h1>HOME PAGE</h1>
-            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
-        </Container>
+        <>
+            <div style={{ height: '500px', width: '100%', overflow: 'hidden' }}>
+                <img src={HomeHeader}
+                    style={{
+                        minWidth: '100%',
+                        minHeight: '500px',
+                        position: 'relative',
+                        top: '50%',
+                        transform: 'translateY(-50%) translateX(-50%)',
+                        left: '50%',
+                    }} alt=''></img>
+            </div>
+            <Row className='p-5 bg-dark' >
+                <Col md={{ span: 2, offset:1 }}>
+                    <img src={NPT}  className='mx-auto d-block' height={150} />
+                </Col>
+                <Col md={{ span: 6 }}>
+                    <h1 style={{ 
+                            color: '#ABE7FC', 
+                            textAlign: 'center', 
+                            fontWeight: 'bold', 
+                            fontSize: '4rem' }} >Department of Fisheries Resources Management</h1>
+                </Col>
+                <Col md={{ span: 2 }} >
+                    <img src={DFRM} className='mx-auto d-block' height={150} />
+                </Col>
+            </Row>
+        </>
     )
 }

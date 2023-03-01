@@ -17,7 +17,7 @@ export default function ListPage({ target, keys }) {
     const [list, setList] = useState(null);
 
     const data = useLoaderData();
-    // console.log(data);
+    console.log(data);
 
     // prep data using keys
     useEffect(() => {
@@ -31,6 +31,13 @@ export default function ListPage({ target, keys }) {
         setList(readyList);
     }, [data])
 
+    function test() {
+        let newdat=[];
+        data.map(rec => newdat.push(flatten(rec)));
+        console.log(newdat);
+
+    }
+
     if (!list) {
         return <></>;
     }
@@ -38,6 +45,7 @@ export default function ListPage({ target, keys }) {
     return (
         <>
             <PageHeader title={`${toTitleCase(target)} List`} image={headerImage} />
+            <button onClick={test}>test</button>
             <Container className='mt-5 d-flex justify-content-end'>
                 <Link className="btn btn-primary" to={`/${target}/new/`} >{`Add New ${toTitleCase(target)}`} </Link>
             </Container>
