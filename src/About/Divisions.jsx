@@ -29,8 +29,8 @@ export default function Divisions() {
                     
                 </Row>
             </Container>
-
-            <Container className='my-5'>
+            <SubHeader title={'Department Divisions'} />
+            <Container className='m-5'>
                 <Row className='g-3 row-cols-md-3'>
                     {divisions.map(division => {
                         return (
@@ -39,7 +39,6 @@ export default function Divisions() {
                     })}
                 </Row>
             </Container>
-            <SubHeader title={'Department Divisions'} />
         </>
     );
 }

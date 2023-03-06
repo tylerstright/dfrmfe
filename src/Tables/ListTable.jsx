@@ -3,6 +3,8 @@ import { Container, Table } from 'react-bootstrap';
 import { ActiveCheck, EditButton, ViewButton } from '../HT/HTButtons';
 
 import toTitleCase from '../functions/toTitleCase';
+import 'leaflet/dist/leaflet.css';
+
 
 export default function ListTable(props) {
 
@@ -16,24 +18,24 @@ export default function ListTable(props) {
                 <thead>
                     <tr>
                         {/* check permissions to show edit button */}
-                        {Object.keys(props.data[0]).map(field => (<th >{toTitleCase(field)}</th>))}
+                        {Object.keys(props.data[0]).map(field => (<th key={field} >{toTitleCase(field)}</th>))}
                     </tr>
                 </thead >
                 <tbody>
-                    {props.data.map(rec => {
+                    {props.data.map((rec, index) => {
                         return (
-                            <tr>
+                            <tr key={index}>
                                 {Object.values(rec).map((val, index) => {
                                     // it will throw an error here because I'm not passing keys.. 2/7/23
                                     switch (Object.keys(rec)[index]) {
                                         case 'view':
-                                            return <td ><ViewButton value={val} /></td>;
+                                            return <td key={index} ><ViewButton value={val} /></td>;
                                         case 'edit':
-                                            return <td ><EditButton value={val} /></td>;
+                                            return <td key={index} ><EditButton value={val} /></td>;
                                         case 'active':
-                                            return <td className='align-middle'><ActiveCheck value={val} /></td>
+                                            return <td key={index} className='align-middle'><ActiveCheck value={val} /></td>
                                         default:
-                                            return <td >{val}</td>;
+                                            return <td key={index} >{val}</td>;
                                     }
 
                                 })}

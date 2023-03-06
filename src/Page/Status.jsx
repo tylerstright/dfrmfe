@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Table } from 'react-bootstrap';
 import { useLoaderData } from 'react-router-dom';
-
 import { CartesianGrid, Label, Legend, Line, LineChart, ReferenceLine,  ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 
 import PageHeader from './PageHeader';
+import SubHeader from './SubHeader';
 import headerImage from "../images/background.jpg";
 
 export default function Status() {
@@ -49,8 +49,6 @@ export default function Status() {
         return (
             <Container>
                 <p>Loading...</p>
-                <button onClick={() => console.log(dart)} >DART</button>
-                <button onClick={() => console.log(rechartsData)}>recharts</button>
             </Container>
         )
 
@@ -60,10 +58,8 @@ export default function Status() {
     return (
         <>
             <PageHeader title={'Snake Basin Fish Status'} image={headerImage} />
-            <button onClick={() => console.log(dart)} >DART</button>
-            <button onClick={() => console.log(rechartsData)}>recharts</button>
-            <button onClick={test}>keys</button>
-            <Container className='py-5' style={{ height: '50vh', width: '80vw' }}>
+            <SubHeader title='Lower Granite Adult Counts' />
+            <Container className='pb-5' style={{ height: '50vh', width: '80vw' }}>
                 <ResponsiveContainer width={'100%'} height={'100%'}>
                     <LineChart data={rechartsData}>
                         <CartesianGrid stroke='#ccc' strokeDasharray={'3 3'} />
@@ -105,9 +101,7 @@ export default function Status() {
                             )
                         })}
                     </tbody>
-
                 </Table>
-
             </Container>
         </>
     )

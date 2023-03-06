@@ -16,7 +16,7 @@ export default function DivisionDetail() {
         <>
             <PageHeader title={division.name} image={headerImage} />
             <Description description={division.description} />
-            <EmployeeCard />
+            {/* <EmployeeCard employee={division.director}/> */}
         </>
     )
 }
