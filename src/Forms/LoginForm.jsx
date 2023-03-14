@@ -47,7 +47,8 @@ export default function LoginForm(props) {
         <Container className='my-4' >
             <br />
             <Row>
-                <Col><button onClick={() => console.log(csrftoken)}>csrf token</button>
+                <Col> 
+                {/* <button onClick={() => console.log(csrftoken)}>csrf token</button> */}
                 </Col>
                 <Col>
                     <h1 className={'text-center'} style={{ color: 'black' }}>Sign In</h1>

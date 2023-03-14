@@ -14,11 +14,10 @@ export default function NavBar(props) {
 
     useEffect(() => {
         if (props.userId !== null && props.userId !== undefined) {
-            console.log('FIRE')
             axios.get(`/api/accounts/${props.userId}/`
             )
                 .then(response => {
-                    console.log(response);
+                    // console.log(response);
                     setUserName(response.data.user.first_name + ' ' + response.data.user.last_name);
                 })
         }
@@ -56,30 +55,20 @@ export default function NavBar(props) {
                         </NavDropdown>
                     </Nav>
                     <Nav>
-                        {userName === null ? 
-                        <NavLink to='/accounts/login/' className={'nav-link'} >Sign In</NavLink> :
-                        <NavDropdown className='ml-auto' title={userName} id="nav-dropdown" menuVariant='dark'>
-                            <NavDropdown.Item href='/profile/'>User Profile</NavDropdown.Item>
-                            <NavDropdown.Item href='/'>Sign Out</NavDropdown.Item>
-                            <NavDropdown.Divider color='#dee2e6'></NavDropdown.Divider>
-                            <NavDropdown.ItemText><strong>View Content</strong></NavDropdown.ItemText>
-                            <NavDropdown.Item href='/employee/list/' >Employees</NavDropdown.Item>
-                            <NavDropdown.Item href='/project/list/'>Projects</NavDropdown.Item>
-                            <NavDropdown.Item href='/division/list/'>Divisions</NavDropdown.Item>
-                            <NavDropdown.Item href='/department/list/'>Departments</NavDropdown.Item>
-                        </NavDropdown>
+                        {userName === null ?
+                            <NavLink to='/accounts/login/' className={'nav-link'} >Sign In</NavLink> :
+                            <NavDropdown className='ml-auto' title={userName} id="nav-dropdown" menuVariant='dark'>
+                                <NavDropdown.Item href='/profile/'>User Profile</NavDropdown.Item>
+                                <NavDropdown.Item href='/'>Sign Out</NavDropdown.Item>
+                                <NavDropdown.Divider color='#dee2e6'></NavDropdown.Divider>
+                                <NavDropdown.ItemText><strong>View Content</strong></NavDropdown.ItemText>
+                                <NavDropdown.Item href='/employee/list/' >Employees</NavDropdown.Item>
+                                <NavDropdown.Item href='/project/list/'>Projects</NavDropdown.Item>
+                                <NavDropdown.Item href='/division/list/'>Divisions</NavDropdown.Item>
+                                <NavDropdown.Item href='/department/list/'>Departments</NavDropdown.Item>
+                            </NavDropdown>
                         }
-                        {/* <NavLink to='/accounts/login/' className={'nav-link'} >Sign In</NavLink>
-                        <NavDropdown className='ml-auto' title="UserName" id="nav-dropdown" menuVariant='dark'>
-                            <NavDropdown.Item href='/profile/'>User Profile</NavDropdown.Item>
-                            <NavDropdown.Item href='/'>Sign Out</NavDropdown.Item>
-                            <NavDropdown.Divider color='#dee2e6'></NavDropdown.Divider>
-                            <NavDropdown.ItemText><strong>View Content</strong></NavDropdown.ItemText>
-                            <NavDropdown.Item href='/employee/list/' >Employees</NavDropdown.Item>
-                            <NavDropdown.Item href='/project/list/'>Projects</NavDropdown.Item>
-                            <NavDropdown.Item href='/division/list/'>Divisions</NavDropdown.Item>
-                            <NavDropdown.Item href='/department/list/'>Departments</NavDropdown.Item>
-                        </NavDropdown> */}
+
                     </Nav>
                 </Navbar.Collapse>
             </Container>
