@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import { Nav, NavDropdown } from 'react-bootstrap';
@@ -9,6 +10,20 @@ import NPTlogos from '../images/NPTlogos2.png';
 // https://react-bootstrap.github.io/components/dropdowns/
 
 export default function NavBar(props) {
+    const [userName, setUserName] = useState(null);
+
+    useEffect(() => {
+        if (props.userId !== null && props.userId !== undefined) {
+            console.log('FIRE')
+            axios.get(`/api/accounts/${props.userId}/`
+            )
+                .then(response => {
+                    console.log(response);
+                    setUserName(response.data.user.first_name + ' ' + response.data.user.last_name);
+                })
+        }
+    }, [props.userId])
+
     return (
         <Navbar bg="dark" variant='dark' expand="lg" className='sticky-top' >
             <Container>
@@ -29,7 +44,6 @@ export default function NavBar(props) {
                             <NavDropdown.Item href='https://nptfisheries.shinyapps.io/PITtrackR/' target='_blank' >PitTrackR</NavDropdown.Item>
                         </NavDropdown>
                         <NavDropdown title="About Us" id="nav-dropdown" menuVariant='dark'>
-                            {/* These could be sized down similar to the UserName dropdown, but the highlight function doesn't carry. */}
                             <NavDropdown.Item>
                                 <NavLink to='/division/' className={'nav-link py-0'} >Department Structure</NavLink>
                             </NavDropdown.Item>
@@ -42,8 +56,9 @@ export default function NavBar(props) {
                         </NavDropdown>
                     </Nav>
                     <Nav>
-                        <NavLink to='/accounts/login/' className={'nav-link'} >Sign In</NavLink>
-                        <NavDropdown className='ml-auto' title="UserName" id="nav-dropdown" menuVariant='dark'>
+                        {userName === null ? 
+                        <NavLink to='/accounts/login/' className={'nav-link'} >Sign In</NavLink> :
+                        <NavDropdown className='ml-auto' title={userName} id="nav-dropdown" menuVariant='dark'>
                             <NavDropdown.Item href='/profile/'>User Profile</NavDropdown.Item>
                             <NavDropdown.Item href='/'>Sign Out</NavDropdown.Item>
                             <NavDropdown.Divider color='#dee2e6'></NavDropdown.Divider>
@@ -53,6 +68,18 @@ export default function NavBar(props) {
                             <NavDropdown.Item href='/division/list/'>Divisions</NavDropdown.Item>
                             <NavDropdown.Item href='/department/list/'>Departments</NavDropdown.Item>
                         </NavDropdown>
+                        }
+                        {/* <NavLink to='/accounts/login/' className={'nav-link'} >Sign In</NavLink>
+                        <NavDropdown className='ml-auto' title="UserName" id="nav-dropdown" menuVariant='dark'>
+                            <NavDropdown.Item href='/profile/'>User Profile</NavDropdown.Item>
+                            <NavDropdown.Item href='/'>Sign Out</NavDropdown.Item>
+                            <NavDropdown.Divider color='#dee2e6'></NavDropdown.Divider>
+                            <NavDropdown.ItemText><strong>View Content</strong></NavDropdown.ItemText>
+                            <NavDropdown.Item href='/employee/list/' >Employees</NavDropdown.Item>
+                            <NavDropdown.Item href='/project/list/'>Projects</NavDropdown.Item>
+                            <NavDropdown.Item href='/division/list/'>Divisions</NavDropdown.Item>
+                            <NavDropdown.Item href='/department/list/'>Departments</NavDropdown.Item>
+                        </NavDropdown> */}
                     </Nav>
                 </Navbar.Collapse>
             </Container>

@@ -3,6 +3,8 @@ import axios from 'axios';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 
+import Cookies from 'js-cookie';
+
 import { TextInput } from './Inputs';
 
 export default function SignUpForm(props) {
@@ -14,21 +16,63 @@ export default function SignUpForm(props) {
     } = useForm();
 
     const onSubmit = (data) => {
+        const csrftoken = Cookies.get("csrftoken");
+
         console.log('submit login...');
 
-        // console.log(data.password);
-        // console.log(document.getElementById('password-repeat').value)
-
-        if(data.password !== document.getElementById('password-repeat').value) {
+        if (data.password !== document.getElementById('password-repeat').value) {
+            console.log('Passwords did not match.');
             return alert('Woops! Your passwords do not match! Please try again.');
         } else {
+            console.log('data:');
             console.log(data);
-        }        
+            console.log("response:")
+            axios.post('/accounts/signup/', data
+                , {
+                    headers: {
+                        "X-CSRFToken": csrftoken,  // django will convert this into "HTTP_X_CSRFTOKEN", which is the default CSRF_HEADER_NAME.
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    }
+                }
+            )
+                .then(response => { // 200 doesn't necessarily mean I was given authorization. Should it be returning an auth token??
+                    console.log(response);
+                })
+                .catch(error => { // failure
+                    console.log('Login failed!')
+                    console.log(error);
+                });
+        }
+    }
+
+
+    function tryNew() {
+        console.log('tryNew...');
+        const csrftoken = Cookies.get("csrftoken");
+
+
+        axios.get('/api/accounts/' //, {
+        //     headers: {
+        //         "X-CSRFToken": csrftoken,  // django will convert this into "HTTP_X_CSRFTOKEN", which is the default CSRF_HEADER_NAME.
+        //         'Accept': 'application/json',
+        //         'Content-Type': 'application/json'
+        //     }
+        // }
+        )
+            .then(response => { // 200 doesn't necessarily mean I was given authorization. Should it be returning an auth token??
+                console.log(response);
+            })
+            .catch(error => { // failure
+                console.log('Login failed!')
+                console.log(error);
+            });
     }
 
     return (
         <Container className='my-4' >
             <br />
+            <button onClick={tryNew}>tryNew</button>
             <Row>
                 <Col></Col>
                 <Col>

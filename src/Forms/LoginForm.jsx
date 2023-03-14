@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
@@ -7,6 +8,7 @@ import { Link } from 'react-router-dom';
 import Cookies from 'js-cookie';
 
 export default function LoginForm(props) {
+    const navigate = useNavigate();
 
     const csrftoken = Cookies.get('csrftoken');
 
@@ -18,21 +20,21 @@ export default function LoginForm(props) {
 
     const onSubmit = (data) => {
         console.log('submit login...');
-        // console.log(data);
-
-        // request
-        // axios.post('/api/accounts/login/', data
-        axios.get('/api/accounts/' //, data
-            // , {
-            //     headers: {
-            //         "X-CSRFToken": csrftoken,  // django will convert this into "HTTP_X_CSRFTOKEN", which is the default CSRF_HEADER_NAME.
-            //         'Accept': 'application/json',
-            //         'Content-Type': 'application/json'
-            //     }
-            // }
+        
+        axios.post('/login/', data
+            , {
+                headers: {
+                    "X-CSRFToken": csrftoken,  // django will convert this into "HTTP_X_CSRFTOKEN", which is the default CSRF_HEADER_NAME.
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            }
         )
             .then(response => { // 200 doesn't necessarily mean I was given authorization. Should it be returning an auth token??
                 console.log(response);
+                props.setToken(response.data.token);
+                props.setUserId(response.data.user_id);
+                navigate('/');
             })
             .catch(error => { // failure
                 console.log('Login failed!')
@@ -41,32 +43,11 @@ export default function LoginForm(props) {
             });
     }
 
-    function tryAPI() {
-        axios.get('/api-auth/' //, data
-        // , {
-        //     headers: {
-        //         "X-CSRFToken": csrftoken,  // django will convert this into "HTTP_X_CSRFTOKEN", which is the default CSRF_HEADER_NAME.
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json'
-        //     }
-        // }
-    )
-        .then(response => { // 200 doesn't necessarily mean I was given authorization. Should it be returning an auth token??
-            console.log(response);
-        })
-        .catch(error => { // failure
-            console.log('Login failed!')
-            console.log(error);
-            // alert('Username and Password combination not accepted, please try again.');
-        });
-    }
-
     return (
         <Container className='my-4' >
             <br />
             <Row>
                 <Col><button onClick={() => console.log(csrftoken)}>csrf token</button>
-                    <button onClick={tryAPI}>API AUTH</button>
                 </Col>
                 <Col>
                     <h1 className={'text-center'} style={{ color: 'black' }}>Sign In</h1>

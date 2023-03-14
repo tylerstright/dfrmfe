@@ -32,14 +32,15 @@ import DivisionDetail from '../Detail/DivisionDetail';
 import UserProfile from '../User/UserProfile';
 
 export default function App() {
-  const [user, setUser] = useState(null);
+  const [userId, setUserId] = useState(null);
+  const [token, setToken] = useState(null);
 
   let router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<Layout />} >
+      <Route path="/" element={<Layout userId={userId} />} >
         <Route index element={<Home />} />
-        <Route path="/accounts/login/" element={<LoginForm user={user} setUser={setUser} />} />
-        <Route path="/accounts/signup/" element={<SignUpForm user={user} setUser={setUser} />} />
+        <Route path="/accounts/login/" element={<LoginForm setUserId={setUserId} setToken={setToken} />} />
+        <Route path="/accounts/signup/" element={<SignUpForm setUser={setUserId} />} />
 
         <Route
           path='/status/'

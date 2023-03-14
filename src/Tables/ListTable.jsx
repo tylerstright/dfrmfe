@@ -3,7 +3,7 @@ import { Container, Table } from 'react-bootstrap';
 import { ActiveCheck, EditButton, ViewButton } from '../HT/HTButtons';
 
 import toTitleCase from '../functions/toTitleCase';
-import 'leaflet/dist/leaflet.css';
+
 
 
 export default function ListTable(props) {
