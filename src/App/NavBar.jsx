@@ -10,20 +10,6 @@ import NPTlogos from '../images/NPTlogos2.png';
 // https://react-bootstrap.github.io/components/dropdowns/
 
 export default function NavBar(props) {
-    const [userName, setUserName] = useState(null);
-
-    const activeStyle = { backgroundColor: 'yellow' }
-
-    useEffect(() => {
-        if (props.userId !== null && props.userId !== undefined) {
-            axios.get(`/api/accounts/${props.userId}/`
-            )
-                .then(response => {
-                    // console.log(response);
-                    setUserName(response.data.user.first_name + ' ' + response.data.user.last_name);
-                })
-        }
-    }, [props.userId])
 
     return (
         <Navbar bg="dark" variant='dark' expand="lg" className='sticky-top' >
@@ -57,9 +43,9 @@ export default function NavBar(props) {
                         </NavDropdown>
                     </Nav>
                     <Nav>
-                        {userName === null ?
+                        {props.fullName === null ?
                             <NavLink to='/accounts/login/' className={'nav-link'} >Sign In</NavLink> :
-                            <NavDropdown className='ml-auto' title={userName} id="nav-dropdown" menuVariant='dark'>
+                            <NavDropdown className='ml-auto' title={props.fullName} id="nav-dropdown" menuVariant='dark'>
                                 <NavDropdown.Item>
                                     <NavLink className='nav-link py-0' to='/profile/' >User Profile</NavLink>
                                 </NavDropdown.Item>

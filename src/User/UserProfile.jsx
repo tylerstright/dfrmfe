@@ -1,8 +1,6 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 
-import profilePic from '../images/parr.jpg';
-
 export default function UserProfile() {
 
     const profile = useLoaderData();

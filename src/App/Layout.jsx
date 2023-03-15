@@ -8,7 +8,7 @@ export default function Layout(props) {
 
     return (
         <>
-            <NavBar userId={props.userId} />
+            <NavBar fullName={props.fullName} />
             <Outlet />
             <Footer />
         </>

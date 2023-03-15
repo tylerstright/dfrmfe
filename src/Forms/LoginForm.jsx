@@ -34,6 +34,8 @@ export default function LoginForm(props) {
                 console.log(response);
                 props.setToken(response.data.token);
                 props.setUserId(response.data.user_id);
+                props.setFullName(response.data.full_name);
+                props.setIsAdmin(response.data.is_admin);
                 navigate('/');
             })
             .catch(error => { // failure

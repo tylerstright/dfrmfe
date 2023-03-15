@@ -33,13 +33,19 @@ import UserProfile from '../User/UserProfile';
 
 export default function App() {
   const [userId, setUserId] = useState(null);
+  const [fullName, setFullName] = useState(null);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [token, setToken] = useState(null);
 
   let router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<Layout userId={userId} />} >
+      <Route path="/" element={<Layout fullName={fullName} />} >
         <Route index element={<Home />} />
-        <Route path="/accounts/login/" element={<LoginForm setUserId={setUserId} setToken={setToken} />} />
+        <Route path="/accounts/login/" element={<LoginForm 
+                                                    setUserId={setUserId} 
+                                                    setToken={setToken} 
+                                                    setFullName={setFullName} 
+                                                    setIsAdmin={setIsAdmin} />} />
         <Route path="/accounts/signup/" element={<SignUpForm setUser={setUserId} />} />
 
         <Route
