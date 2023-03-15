@@ -27,7 +27,7 @@ export default function SignUpForm(props) {
             console.log('data:');
             console.log(data);
             console.log("response:")
-            axios.post('/accounts/signup/', data
+            axios.post('/api/user/', data
                 , {
                     headers: {
                         "X-CSRFToken": csrftoken,  // django will convert this into "HTTP_X_CSRFTOKEN", which is the default CSRF_HEADER_NAME.
@@ -40,7 +40,7 @@ export default function SignUpForm(props) {
                     console.log(response);
                 })
                 .catch(error => { // failure
-                    console.log('Login failed!')
+                    console.log('SignUp failed!')
                     console.log(error);
                 });
         }
@@ -52,7 +52,7 @@ export default function SignUpForm(props) {
         const csrftoken = Cookies.get("csrftoken");
 
 
-        axios.get('/api/accounts/' //, {
+        axios.get('/api/user/' //, {
         //     headers: {
         //         "X-CSRFToken": csrftoken,  // django will convert this into "HTTP_X_CSRFTOKEN", which is the default CSRF_HEADER_NAME.
         //         'Accept': 'application/json',
@@ -79,11 +79,11 @@ export default function SignUpForm(props) {
                     <h1 className={'text-center'} style={{ color: 'black' }}>Sign Up</h1>
                     <Form onSubmit={handleSubmit(onSubmit)}>
 
-                        <Form.Group className="mb-3" controlId={'email'}>
+                        <Form.Group className="mb-3" controlId={'username'}>
                             <Form.Label>E-mail Address*</Form.Label>
                             <Form.Control
                                 type='email'
-                                {...register('email', {
+                                {...register('username', {
                                     required: 'You must provide an email.' //,
                                     // pattern: {
                                     //     value: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/,
@@ -92,9 +92,9 @@ export default function SignUpForm(props) {
                                 })}
                                 required
                             />
-                            {errors['email'] && <p className="errorMsg">{errors['email'].message}</p>}
+                            {errors['username'] && <p className="errorMsg">{errors['username'].message}</p>}
                         </Form.Group>
-
+                        
                         <TextInput
                             name='first_name'
                             label='First Name'

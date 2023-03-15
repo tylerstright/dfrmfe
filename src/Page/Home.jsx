@@ -6,6 +6,7 @@ import DFRM from '../images/DFRM.png';
 import NPT from '../images/NPT.png';
 
 export default function Home() {
+
     return (
         <>
             <div style={{ height: '500px', width: '100%', overflow: 'hidden' }}>

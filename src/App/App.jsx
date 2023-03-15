@@ -59,7 +59,7 @@ export default function App() {
 
         <Route
           path="/profile/"
-          element={<UserProfile />}
+          element={<UserProfile userId={userId} />}
           loader={async () => { return fetch(`/api/accounts/${userId}/`); }}
           errorElement={<ErrorPage />}
         />
@@ -101,7 +101,7 @@ export default function App() {
             loader={async ({ params }) => {
               return fetch(`/api/subproject/`)
                 .then(response => response.json())
-                .then(data => data.filter(sub => sub.project.id == params.id)) // data type don't need to match\ (string vs. number "2"==2)
+                .then(data => data.filter(sub => sub.project.id === params.id)) // data type don't need to match\ (string vs. number "2"==2)
             }
             }
             errorElement={<ErrorPage />}
@@ -111,7 +111,7 @@ export default function App() {
               loader={async ({ params }) => {
                 return fetch(`/api/task/`)
                   .then(response => response.json())
-                  .then(data => data.filter(task => task.subproject.project.id == params.id)) // data type don't need to match\ (string vs. number "2"==2)
+                  .then(data => data.filter(task => task.subproject.project.id === params.id)) // data type don't need to match\ (string vs. number "2"==2)
               }
               }
               errorElement={<ErrorPage />}
@@ -195,12 +195,12 @@ export default function App() {
           errorElement={<ErrorPage />} />
 
 
-        <Route path="/employee/new/" element={<AddPage />} />
-        <Route path="/department/new/" element={<AddPage />} />
-        <Route path="/division/new/" element={<AddPage />} />
-        <Route path="/project/new/" element={<AddPage />} />
+        <Route path="/employee/new/" element={<AddPage token={token} />} />
+        <Route path="/department/new/" element={<AddPage token={token} />} />
+        <Route path="/division/new/" element={<AddPage token={token} />} />
+        <Route path="/project/new/" element={<AddPage token={token} />} />
 
-        <Route path="/project/:id/edit/" element={<EditPage />} />
+        <Route path="/project/:id/edit/" element={<EditPage token={token}/>} />
 
 
 

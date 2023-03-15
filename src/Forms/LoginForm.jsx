@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
@@ -32,7 +32,7 @@ export default function LoginForm(props) {
         )
             .then(response => { // 200 doesn't necessarily mean I was given authorization. Should it be returning an auth token??
                 console.log(response);
-                props.setToken(response.data.token);
+                props.setToken('Token ' + response.data.token);
                 props.setUserId(response.data.user_id);
                 props.setFullName(response.data.full_name);
                 props.setIsAdmin(response.data.is_admin);
