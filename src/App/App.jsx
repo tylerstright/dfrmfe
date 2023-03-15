@@ -40,7 +40,7 @@ export default function App() {
 
   let router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<Layout fullName={fullName} />} >
+      <Route path="/" element={<Layout fullName={fullName} isAdmin={isAdmin} />} >
         <Route index element={<Home />} />
         <Route path="/accounts/login/"
           element={<LoginForm

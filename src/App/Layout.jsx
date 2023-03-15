@@ -8,7 +8,7 @@ export default function Layout(props) {
 
     return (
         <>
-            <NavBar fullName={props.fullName} />
+            <NavBar fullName={props.fullName} isAdmin={props.isAdmin} />
             <Outlet />
             <Footer />
         </>

@@ -52,20 +52,23 @@ export default function NavBar(props) {
                                 <NavDropdown.Item>
                                     <NavLink className='nav-link py-0' to='/accounts/signout/' >Sign Out</NavLink>
                                 </NavDropdown.Item>
-                                <NavDropdown.Divider color='#dee2e6'></NavDropdown.Divider>
-                                <NavDropdown.ItemText><strong>View Content</strong></NavDropdown.ItemText>
-                                <NavDropdown.Item>
-                                    <NavLink className='nav-link py-0' to='/employee/list/' >Employees</NavLink>
-                                </NavDropdown.Item>
-                                <NavDropdown.Item>
-                                    <NavLink className='nav-link py-0' to='/project/list/' >Projects</NavLink>
-                                </NavDropdown.Item>
-                                <NavDropdown.Item>
-                                    <NavLink className='nav-link py-0' to='/division/list/' >Divisions</NavLink>
-                                </NavDropdown.Item>
-                                <NavDropdown.Item>
-                                    <NavLink className='nav-link py-0' to='/department/list/' >Departments</NavLink>
-                                </NavDropdown.Item>
+                                {props.isAdmin ?
+                                    <>
+                                        <NavDropdown.Divider color='#dee2e6'></NavDropdown.Divider>
+                                        <NavDropdown.ItemText><strong>View Content</strong></NavDropdown.ItemText>
+                                        <NavDropdown.Item>
+                                            <NavLink className='nav-link py-0' to='/employee/list/' >Employees</NavLink>
+                                        </NavDropdown.Item>
+                                        <NavDropdown.Item>
+                                            <NavLink className='nav-link py-0' to='/project/list/' >Projects</NavLink>
+                                        </NavDropdown.Item>
+                                        <NavDropdown.Item>
+                                            <NavLink className='nav-link py-0' to='/division/list/' >Divisions</NavLink>
+                                        </NavDropdown.Item>
+                                        <NavDropdown.Item>
+                                            <NavLink className='nav-link py-0' to='/department/list/' >Departments</NavLink>
+                                        </NavDropdown.Item>
+                                    </> : <></>}
                             </NavDropdown>
                         }
                     </Nav>
