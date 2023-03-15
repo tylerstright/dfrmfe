@@ -7,6 +7,7 @@ import Layout from './Layout';
 import Home from '../Page/Home';
 import LoginForm from '../Forms/LoginForm';
 import SignUpForm from '../Forms/SignUpForm';
+import SignOut from '../Page/SignOut';
 import ErrorPage from './ErrorPage';
 
 import Documents from '../Page/Documents';
@@ -41,12 +42,20 @@ export default function App() {
     createRoutesFromElements(
       <Route path="/" element={<Layout fullName={fullName} />} >
         <Route index element={<Home />} />
-        <Route path="/accounts/login/" element={<LoginForm 
-                                                    setUserId={setUserId} 
-                                                    setToken={setToken} 
-                                                    setFullName={setFullName} 
-                                                    setIsAdmin={setIsAdmin} />} />
+        <Route path="/accounts/login/"
+          element={<LoginForm
+            setUserId={setUserId}
+            setToken={setToken}
+            setFullName={setFullName}
+            setIsAdmin={setIsAdmin} />} />
         <Route path="/accounts/signup/" element={<SignUpForm setUser={setUserId} />} />
+
+        <Route path='/accounts/signout/'
+          element={<SignOut
+            setUserId={setUserId}
+            setToken={setToken}
+            setFullName={setFullName}
+            setIsAdmin={setIsAdmin} />} />
 
         <Route
           path="/profile/"

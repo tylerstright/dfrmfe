@@ -50,7 +50,7 @@ export default function NavBar(props) {
                                     <NavLink className='nav-link py-0' to='/profile/' >User Profile</NavLink>
                                 </NavDropdown.Item>
                                 <NavDropdown.Item>
-                                    <NavLink className='nav-link py-0' to='/' >Sign Out</NavLink>
+                                    <NavLink className='nav-link py-0' to='/accounts/signout/' >Sign Out</NavLink>
                                 </NavDropdown.Item>
                                 <NavDropdown.Divider color='#dee2e6'></NavDropdown.Divider>
                                 <NavDropdown.ItemText><strong>View Content</strong></NavDropdown.ItemText>
