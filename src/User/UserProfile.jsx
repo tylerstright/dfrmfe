@@ -1,12 +1,12 @@
 import React from 'react';
+import { useLoaderData } from 'react-router-dom';
 
 import profilePic from '../images/parr.jpg';
 
 export default function UserProfile() {
 
-    // if (!props.userInfo) {
-    //     return <></>;
-    // }
+    const profile = useLoaderData();
+    console.log(profile);
 
     // this needs to be fixed, but this is fine for now.
     const avatarCSS = {

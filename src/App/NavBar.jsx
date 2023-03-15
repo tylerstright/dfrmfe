@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
-import { Nav, NavDropdown } from 'react-bootstrap';
+import { Dropdown, Nav, NavDropdown } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import NPTlogos from '../images/NPTlogos2.png';
 
@@ -11,6 +11,8 @@ import NPTlogos from '../images/NPTlogos2.png';
 
 export default function NavBar(props) {
     const [userName, setUserName] = useState(null);
+
+    const activeStyle = { backgroundColor: 'yellow' }
 
     useEffect(() => {
         if (props.userId !== null && props.userId !== undefined) {
@@ -58,17 +60,28 @@ export default function NavBar(props) {
                         {userName === null ?
                             <NavLink to='/accounts/login/' className={'nav-link'} >Sign In</NavLink> :
                             <NavDropdown className='ml-auto' title={userName} id="nav-dropdown" menuVariant='dark'>
-                                <NavDropdown.Item href='/profile/'>User Profile</NavDropdown.Item>
-                                <NavDropdown.Item href='/'>Sign Out</NavDropdown.Item>
+                                <NavDropdown.Item>
+                                    <NavLink className='nav-link py-0' to='/profile/' >User Profile</NavLink>
+                                </NavDropdown.Item>
+                                <NavDropdown.Item>
+                                    <NavLink className='nav-link py-0' to='/' >Sign Out</NavLink>
+                                </NavDropdown.Item>
                                 <NavDropdown.Divider color='#dee2e6'></NavDropdown.Divider>
                                 <NavDropdown.ItemText><strong>View Content</strong></NavDropdown.ItemText>
-                                <NavDropdown.Item href='/employee/list/' >Employees</NavDropdown.Item>
-                                <NavDropdown.Item href='/project/list/'>Projects</NavDropdown.Item>
-                                <NavDropdown.Item href='/division/list/'>Divisions</NavDropdown.Item>
-                                <NavDropdown.Item href='/department/list/'>Departments</NavDropdown.Item>
+                                <NavDropdown.Item>
+                                    <NavLink className='nav-link py-0' to='/employee/list/' >Employees</NavLink>
+                                </NavDropdown.Item>
+                                <NavDropdown.Item>
+                                    <NavLink className='nav-link py-0' to='/project/list/' >Projects</NavLink>
+                                </NavDropdown.Item>
+                                <NavDropdown.Item>
+                                    <NavLink className='nav-link py-0' to='/division/list/' >Divisions</NavLink>
+                                </NavDropdown.Item>
+                                <NavDropdown.Item>
+                                    <NavLink className='nav-link py-0' to='/department/list/' >Departments</NavLink>
+                                </NavDropdown.Item>
                             </NavDropdown>
                         }
-
                     </Nav>
                 </Navbar.Collapse>
             </Container>
