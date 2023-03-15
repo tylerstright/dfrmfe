@@ -7,6 +7,7 @@ import Layout from './Layout';
 import Home from '../Page/Home';
 import LoginForm from '../Forms/LoginForm';
 import SignUpForm from '../Forms/SignUpForm';
+import ConfirmEmail from '../Page/ConfirmEmail';
 import SignOut from '../Page/SignOut';
 import ErrorPage from './ErrorPage';
 
@@ -49,6 +50,7 @@ export default function App() {
             setFullName={setFullName}
             setIsAdmin={setIsAdmin} />} />
         <Route path="/accounts/signup/" element={<SignUpForm setUser={setUserId} />} />
+        <Route path='/accounts/confirm-email/' element={<ConfirmEmail />} />
 
         <Route path='/accounts/signout/'
           element={<SignOut

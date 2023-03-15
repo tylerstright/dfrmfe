@@ -2,12 +2,14 @@ import React from 'react';
 import axios from 'axios';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 import Cookies from 'js-cookie';
 
 import { TextInput } from './Inputs';
 
 export default function SignUpForm(props) {
+    const navigate = useNavigate();
 
     const {
         register,
@@ -38,6 +40,7 @@ export default function SignUpForm(props) {
             )
                 .then(response => { // 200 doesn't necessarily mean I was given authorization. Should it be returning an auth token??
                     console.log(response);
+                    navigate('/accounts/confirm-email/')
                 })
                 .catch(error => { // failure
                     console.log('SignUp failed!')
@@ -46,33 +49,9 @@ export default function SignUpForm(props) {
         }
     }
 
-
-    function tryNew() {
-        console.log('tryNew...');
-        const csrftoken = Cookies.get("csrftoken");
-
-
-        axios.get('/api/user/' //, {
-        //     headers: {
-        //         "X-CSRFToken": csrftoken,  // django will convert this into "HTTP_X_CSRFTOKEN", which is the default CSRF_HEADER_NAME.
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json'
-        //     }
-        // }
-        )
-            .then(response => { // 200 doesn't necessarily mean I was given authorization. Should it be returning an auth token??
-                console.log(response);
-            })
-            .catch(error => { // failure
-                console.log('Login failed!')
-                console.log(error);
-            });
-    }
-
     return (
         <Container className='my-4' >
             <br />
-            <button onClick={tryNew}>tryNew</button>
             <Row>
                 <Col></Col>
                 <Col>
@@ -94,7 +73,7 @@ export default function SignUpForm(props) {
                             />
                             {errors['username'] && <p className="errorMsg">{errors['username'].message}</p>}
                         </Form.Group>
-                        
+
                         <TextInput
                             name='first_name'
                             label='First Name'
